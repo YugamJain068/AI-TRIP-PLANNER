@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setHasSubmitted } from '@/store/formSlice';
 import Navbar from '@/components/Navbar';
 import ActivityCard from '@/components/ActivityCard';
+import Image from 'next/image';
 
 const AiDisplay = () => {
   const { itinerary, hotels, flights } = useSelector((state) => state.itinerary);
@@ -40,7 +41,7 @@ const AiDisplay = () => {
 
             {/* trip overview */}
             <div className="text-white rounded-2xl overflow-hidden relative w-full h-72 mb-4">
-              <img src="/images/america.jpg" alt="Trip Banner" className="w-full h-full object-cover rounded-2xl" />
+              <Image fill src="/images/america.jpg" alt="Trip Banner" className="w-full h-full object-cover rounded-2xl" />
               <div className="absolute bottom-0 flex justify-between left-0 right-0 bg-black/40 p-4">
                 <div className='flex flex-col'>
                   <h2 className="text-2xl font-bold">{itinerary.tripName}</h2>
@@ -61,8 +62,8 @@ const AiDisplay = () => {
 
                   <div className='flex flex-col gap-4'>
                     <div className='flex flex-row h-[180px] w-full gap-4'>
-                      <div className='overflow-hidden h-60 w-60 rounded-md'>
-                        <img className='object-cover rounded-md' src="/images/newyork.avif" alt="" />
+                      <div className='overflow-hidden h-44 w-60 rounded-md relative'>
+                        <Image fill className='object-cover rounded-md' src="/images/newyork.avif" alt="" />
                       </div>
                       <div className='flex flex-col flex-1 p-1'>
                         <div className='flex flex-row justify-between'>
@@ -72,13 +73,13 @@ const AiDisplay = () => {
                         <hr className='my-4 border-1 border-[#b7b6b6]' />
                         {itinerary.hotels.filter(hotel => hotel.city === city.name).map((hotel, idx3) => (
                           <div key={idx3} className='flex flex-row gap-3 mb-2.5'>
-                            <img height={30} width={30} src="/images/hotel.png" alt="" />
+                            <Image height={30} width={30} src="/images/hotel.png" alt="" />
                             <span className='font-normal '>{hotel.notes}</span>
                           </div>
                         ))}
                         {itinerary.travelling.filter(travel => travel.to === city.name).filter(travel => travel.modeOfTransport === "Flight").map((flight, idx3) => (
                           <div key={idx3} className='flex flex-row gap-3 items-center text-center mb-2.5'>
-                            <img height={30} width={30} src="/images/airplane.png" alt="" />
+                            <Image height={30} width={30} src="/images/airplane.png" alt="" />
                             <span className='font-normal '>{flight.from} - {flight.to}</span>
 
                           </div>

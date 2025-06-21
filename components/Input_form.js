@@ -5,7 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { setFormData } from '../store/formSlice';
 import { Loader } from "@googlemaps/js-api-loader";
-import { setHasSubmitted} from '@/store/formSlice';
+import { setHasSubmitted } from '@/store/formSlice';
+import Image from 'next/image';
 
 
 const Input_form = () => {
@@ -178,7 +179,7 @@ const Input_form = () => {
                 infants
             }));
         }
-    }, [session, departure, destination, selectedActivities, selected_budget, selected_member, days]);
+    }, [session, departure, destination, selectedActivities, selected_budget, selected_member, days, adults, children, infants]);
 
     return (
         <>
@@ -302,7 +303,14 @@ const Input_form = () => {
                                         onChange={() => setSelected_budget(option.value)} />
 
                                     <div className="flex flex-col items-center gap-3">
-                                        <img src="/images/money.png" alt="money" className="w-8 h-8" />
+                                        <div className="w-8 h-8 relative">
+                                            <Image
+                                                src="/images/money.png"
+                                                alt="money"
+                                                fill
+                                                className="object-contain"
+                                            />
+                                        </div>
                                         <h2 className="text-lg font-semibold">{option.label}</h2>
                                         <p className="text-gray-500">{option.range}</p>
                                     </div>
@@ -331,7 +339,14 @@ const Input_form = () => {
                                         onChange={() => setSelected_member(member.value)} />
 
                                     <div className="flex flex-col items-center gap-3">
-                                        <img src={member.image} alt={member.label} className="w-8 h-8" />
+                                        <div className="w-8 h-8 relative">
+                                            <Image
+                                                src={member.image}
+                                                alt={member.label}
+                                                fill
+                                                className="object-contain"
+                                            />
+                                        </div>
                                         <h2 className="text-lg font-semibold">{member.label}</h2>
                                     </div>
                                 </label>
@@ -358,7 +373,14 @@ const Input_form = () => {
                                         className="sr-only"
                                     />
                                     <div className="flex flex-col items-center gap-3">
-                                        <img src={activity.image} alt={activity.label} className="w-8 h-8" />
+                                        <div className="w-8 h-8 relative">
+                                            <Image
+                                                src={activity.image}
+                                                alt={activity.label}
+                                                fill
+                                                className="object-contain"
+                                            />
+                                        </div>
                                         <h2 className="text-lg font-semibold">{activity.label}</h2>
                                     </div>
                                 </label>

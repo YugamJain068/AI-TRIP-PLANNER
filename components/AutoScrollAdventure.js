@@ -1,5 +1,6 @@
 "use client";
 import React from 'react'
+import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -40,22 +41,31 @@ export default function AutoScrollAdventure({ width, height, right }) {
           <SwiperSlide key={i}>
             <div className="bg-[#F6FCFE] w-full p-20 h-full flex flex-col gap-15 rounded-2xl overflow-hidden">
               <div className="relative w-full left-[100px]">
-                <img
-                  src={slide.img1}
-                  alt="img1"
-                  className="h-[400px] w-[300px] rounded-2xl "
-                />
-                <img
-                  src={slide.img2}
-                  alt="img2"
-                  className={`h-[350px] w-[260px] rounded-2xl absolute ${right} bottom-[-100px] border-[8px] border-[#F6FCFE]`}
-                />
+                {/* Image 1 */}
+                <div className="relative h-[400px] w-[300px]">
+                  <Image
+                    src={slide.img1}
+                    alt="img1"
+                    fill
+                    className="rounded-2xl object-cover"
+                  />
+                </div>
+
+                {/* Image 2 */}
+                <div className={`absolute ${right} bottom-[-100px] h-[350px] w-[260px] border-[8px] border-[#F6FCFE] rounded-2xl`}>
+                  <Image
+                    src={slide.img2}
+                    alt="img2"
+                    fill
+                    className="rounded-2xl object-cover"
+                  />
+                </div>
               </div>
+
               <div className="flex flex-col mt-20">
                 <h1 className="text-center text-4xl font-bold mb-3">{slide.title}</h1>
                 <p className="text-gray-600 text-center">{slide.desc}</p>
               </div>
-
             </div>
           </SwiperSlide>
         ))}

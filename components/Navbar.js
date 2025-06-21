@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const Navbar = () => {
     const { data: session, status } = useSession();
@@ -30,7 +31,7 @@ const Navbar = () => {
     return (
         <div className='flex border-b-2 border-gray-200 h-16 p-4 justify-around'>
             <Link href="/" className='profile flex items-center gap-2 ml-10'>
-                    <img width="50" height="50" src="/images/logo.avif" alt="Logo" />
+                    <Image width="50" height="50" src="/images/logo.avif" alt="Logo" />
                     <span className='font-bold text-[#F99262] text-2xl'>AI Planner</span>
             </Link>
 
@@ -52,7 +53,7 @@ const Navbar = () => {
                         className='flex items-center gap-2 cursor-pointer select-none'
                         onClick={() => setDropdownOpen(!dropdownOpen)}
                     >
-                        <img width="30" height="30" src="/images/profile-user.png" alt="profile" />
+                        <Image width="30" height="30" src="/images/profile-user.png" alt="profile" />
                         {status === 'authenticated' && session?.user && (
                             <h1 className='text-lg'>{session.user.username}</h1>
                         )}

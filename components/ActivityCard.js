@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getUnsplashImage } from '@/lib/getUnsplashImage';
+import Image from 'next/image';
 
 const ActivityCard = ({ item, delay = 0 }) => {
     const [imageUrl, setImageUrl] = useState('/images/america.jpg');
@@ -25,8 +26,8 @@ const ActivityCard = ({ item, delay = 0 }) => {
                     <p className="text-sm text-gray-500">{item.location}</p>
                 </div>
 
-                <div className="overflow-hidden h-40 w-40 rounded-xl shadow-md border border-gray-100">
-                    <img className="object-cover h-full w-full" src={imageUrl} alt={item.name} />
+                <div className="relative overflow-hidden h-40 w-40 rounded-xl shadow-md border border-gray-100">
+                    <Image fill className="object-cover h-full w-full" src={imageUrl} alt={item.name} />
                 </div>
             </div>
         </div>
