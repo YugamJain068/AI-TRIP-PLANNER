@@ -1,0 +1,645 @@
+{
+  "tripName": "USA Family Adventure",
+  "startDate": "2025-06-20",
+  "endDate": "2025-07-04",
+  "cities": [
+    {
+      "name": "New York City",
+      "startDate": "2025-06-20",
+      "endDate": "2025-06-23",
+      "activities": [
+        {
+          "day": 1,
+          "plan": [
+            {
+              "name": "Arrival at JFK & Transfer to Hotel",
+              "location": "JFK Airport",
+              "time": "10:00 AM",
+              "transportFromPrevious": null
+            },
+            {
+              "name": "Times Square Exploration",
+              "location": "Times Square",
+              "time": "2:00 PM",
+              "transportFromPrevious": {
+                "mode": "Taxi",
+                "from": "JFK Airport",
+                "to": "Times Square",
+                "duration": "1 hour"
+              }
+            }
+          ],
+          "notes": null
+        },
+        {
+          "day": 2,
+          "plan": [
+            {
+              "name": "Statue of Liberty & Ellis Island Ferry",
+              "location": "Battery Park",
+              "time": "9:00 AM",
+              "transportFromPrevious": null
+            },
+            {
+              "name": "9/11 Memorial & Museum",
+              "location": "World Trade Center Site",
+              "time": "1:00 PM",
+              "transportFromPrevious": {
+                "mode": "Taxi",
+                "from": "Battery Park",
+                "to": "World Trade Center Site",
+                "duration": "20 mins"
+              }
+            }
+          ],
+          "notes": null
+        },
+        {
+          "day": 3,
+          "plan": [
+            {
+              "name": "Central Park Bike Ride & Picnic",
+              "location": "Central Park",
+              "time": "10:00 AM",
+              "transportFromPrevious": null
+            },
+            {
+              "name": "Shopping at Macy's",
+              "location": "Macy's Herald Square",
+              "time": "3:00 PM",
+              "transportFromPrevious": {
+                "mode": "Taxi",
+                "from": "Central Park",
+                "to": "Macy's Herald Square",
+                "duration": "25 mins"
+              }
+            }
+          ],
+          "notes": null
+        }
+      ],
+      "notes": "Consider hotels near Times Square or Central Park."
+    },
+    {
+      "name": "Orlando",
+      "startDate": "2025-06-24",
+      "endDate": "2025-06-28",
+      "activities": [
+        {
+          "day": 4,
+          "plan": [
+            {
+              "name": "Arrival at MCO & Transfer to Hotel",
+              "location": "MCO Airport",
+              "time": "11:00 AM",
+              "transportFromPrevious": null
+            },
+            {
+              "name": "Explore Disney Springs",
+              "location": "Disney Springs",
+              "time": "3:00 PM",
+              "transportFromPrevious": {
+                "mode": "Taxi",
+                "from": "MCO Airport",
+                "to": "Disney Springs",
+                "duration": "20 mins"
+              }
+            }
+          ],
+          "notes": null
+        },
+        {
+          "day": 5,
+          "plan": [
+            {
+              "name": "Magic Kingdom",
+              "location": "Walt Disney World",
+              "time": "9:00 AM",
+              "transportFromPrevious": null
+            },
+            {
+              "name": "Fireworks at Magic Kingdom",
+              "location": "Magic Kingdom",
+              "time": "9:00 PM",
+              "transportFromPrevious": {
+                "mode": "Walk",
+                "from": "Magic Kingdom",
+                "to": "Magic Kingdom",
+                "duration": "0 mins"
+              }
+            }
+          ],
+          "notes": null
+        },
+        {
+          "day": 6,
+          "plan": [
+            {
+              "name": "Epcot",
+              "location": "Walt Disney World",
+              "time": "9:00 AM",
+              "transportFromPrevious": null
+            }
+          ],
+          "notes": null
+        },
+        {
+          "day": 7,
+          "plan": [
+            {
+              "name": "Universal Studios Florida",
+              "location": "Universal Orlando Resort",
+              "time": "9:00 AM",
+              "transportFromPrevious": null
+            }
+          ],
+          "notes": null
+        }
+      ],
+      "notes": "Consider hotels near theme parks for easier access."
+    },
+    {
+      "name": "Las Vegas",
+      "startDate": "2025-06-29",
+      "endDate": "2025-07-04",
+      "activities": [
+        {
+          "day": 8,
+          "plan": [
+            {
+              "name": "Arrival at LAS & Transfer to Hotel",
+              "location": "LAS Airport",
+              "time": "10:00 AM",
+              "transportFromPrevious": null
+            },
+            {
+              "name": "Explore the Strip",
+              "location": "Las Vegas Strip",
+              "time": "2:00 PM",
+              "transportFromPrevious": {
+                "mode": "Taxi",
+                "from": "LAS Airport",
+                "to": "Las Vegas Strip",
+                "duration": "15 mins"
+              }
+            }
+          ],
+          "notes": null
+        },
+        {
+          "day": 9,
+          "plan": [
+            {
+              "name": "High Roller Observation Wheel",
+              "location": "The LINQ Promenade",
+              "time": "10:00 AM",
+              "transportFromPrevious": null
+            },
+            {
+              "name": "Bellagio Conservatory & Botanical Garden",
+              "location": "Bellagio Hotel",
+              "time": "2:00 PM",
+              "transportFromPrevious": {
+                "mode": "Walk",
+                "from": "The LINQ Promenade",
+                "to": "Bellagio Hotel",
+                "duration": "20 mins"
+              }
+            }
+          ],
+          "notes": null
+        },
+        {
+          "day": 10,
+          "plan": [
+            {
+              "name": "Grand Canyon Day Trip",
+              "location": "Grand Canyon National Park",
+              "time": "8:00 AM",
+              "transportFromPrevious": null
+            }
+          ],
+          "notes": "Book a day trip tour in advance."
+        },
+        {
+          "day": 11,
+          "plan": [
+            {
+              "name": "Pool Day & Relax",
+              "location": "Hotel Pool",
+              "time": "10:00 AM",
+              "transportFromPrevious": null
+            },
+            {
+              "name": "Fremont Street Experience",
+              "location": "Downtown Las Vegas",
+              "time": "8:00 PM",
+              "transportFromPrevious": {
+                "mode": "Taxi",
+                "from": "Hotel",
+                "to": "Downtown Las Vegas",
+                "duration": "20 mins"
+              }
+            }
+          ],
+          "notes": null
+        },
+        {
+          "day": 12,
+          "plan": [
+            {
+              "name": "Shopping and Exploring",
+              "location": "Las Vegas Strip",
+              "time": "10:00 AM",
+              "transportFromPrevious": null
+            }
+          ],
+          "notes": null
+        },
+        {
+          "day": 13,
+          "plan": [
+            {
+              "name": "Hoover Dam Tour",
+              "location": "Hoover Dam",
+              "time": "9:00 AM",
+              "transportFromPrevious": null
+            }
+          ],
+          "notes": null
+        },
+        {
+          "day": 14,
+          "plan": [
+            {
+              "name": "Red Rock Canyon National Conservation Area",
+              "location": "Red Rock Canyon",
+              "time": "9:00 AM",
+              "transportFromPrevious": null
+            }
+          ],
+          "notes": null
+        },
+        {
+          "day": 15,
+          "plan": [
+            {
+              "name": "Departure from LAS",
+              "location": "LAS Airport",
+              "time": "10:00 AM",
+              "transportFromPrevious": null
+            }
+          ],
+          "notes": null
+        }
+      ],
+      "notes": "Consider hotels on the Strip for easy access to attractions."
+    }
+  ],
+  "hotels": [
+    {
+      "city": "New York City",
+      "cityCode": "NYC",
+      "checkIn": "2025-06-20",
+      "checkOut": "2025-06-24",
+      "notes": "The Peninsula New York or The Ritz-Carlton New York, Central Park"
+    },
+    {
+      "city": "Orlando",
+      "cityCode": "ORL",
+      "checkIn": "2025-06-24",
+      "checkOut": "2025-06-29",
+      "notes": "Four Seasons Resort Orlando or Waldorf Astoria Orlando"
+    },
+    {
+      "city": "Las Vegas",
+      "cityCode": "LAS",
+      "checkIn": "2025-06-29",
+      "checkOut": "2025-07-04",
+      "notes": "The Bellagio or The Venetian Resort"
+    }
+  ],
+  "travelling": [
+    {
+      "from": "Delhi, India",
+      "to": "New York City",
+      "date": "2025-06-20",
+      "modeOfTransport": "Flight",
+      "departure_airport_city_IATAcode": "DEL",
+      "destination_airport_city_IATAcode": "JFK",
+      "notes": "Long flight, consider upgrading for comfort."
+    },
+    {
+      "from": "New York City",
+      "to": "Orlando",
+      "date": "2025-06-24",
+      "modeOfTransport": "Flight",
+      "departure_airport_city_IATAcode": "JFK",
+      "destination_airport_city_IATAcode": "MCO",
+      "notes": "Direct flights are readily available."
+    },
+    {
+      "from": "Orlando",
+      "to": "Las Vegas",
+      "date": "2025-06-29",
+      "modeOfTransport": "Flight",
+      "departure_airport_city_IATAcode": "MCO",
+      "destination_airport_city_IATAcode": "LAS",
+      "notes": "Direct flights are readily available."
+    }
+  ]
+}
+
+
+
+"data": [
+    {
+      "chainCode": "BW",
+      "iataCode": "PAR",
+      "dupeId": 700211483,
+      "name": "BW PREMIER FAUBOURG 88",
+      "hotelId": "BWPAR789",
+      "geoCode": {
+        "latitude": 48.8777,
+        "longitude": 2.3492
+      },
+      "address": {
+        "countryCode": "FR"
+      },
+      "masterChainCode": "EW",
+      "lastUpdate": "2024-05-01T21:26:00",
+      "retailing": {
+        "sponsorship": {
+          "isSponsored": true
+        }
+      }
+    },
+    {
+      "chainCode": "XK",
+      "iataCode": "PAR",
+      "dupeId": 501108178,
+      "name": "DIAMOND HOTEL",
+      "hotelId": "XKPAR120",
+      "geoCode": {
+        "latitude": 48.86831,
+        "longitude": 2.31222
+      },
+      "address": {
+        "countryCode": "FR"
+      },
+      "lastUpdate": "2025-03-09T09:00:17",
+      "retailing": {
+        "sponsorship": {
+          "isSponsored": true
+        }
+      }
+    },
+    {
+      "chainCode": "BR",
+      "iataCode": "PAR",
+      "dupeId": 700035209,
+      "name": "RENAISSANCE PARIS VENDOME",
+      "hotelId": "BRPARVDB",
+      "geoCode": {
+        "latitude": 48.86195,
+        "longitude": 2.33592
+      },
+      "address": {
+        "countryCode": "FR"
+      },
+      "masterChainCode": "EM",
+      "lastUpdate": "2025-06-09T06:06:15",
+      "retailing": {
+        "sponsorship": {
+          "isSponsored": true
+        }
+      }
+    },
+    {
+      "chainCode": "RT",
+      "iataCode": "PAR",
+      "dupeId": 700054942,
+      "name": "MERCURE PARIS TOUR EIFFEL 4*",
+      "hotelId": "RTPAREIF",
+      "geoCode": {
+        "latitude": 48.85052,
+        "longitude": 2.29245
+      },
+      "address": {
+        "countryCode": "FR"
+      },
+      "masterChainCode": "RT",
+      "lastUpdate": "2023-06-15T09:56:20",
+      "retailing": {
+        "sponsorship": {
+          "isSponsored": true
+        }
+      }
+    },
+    {
+      "chainCode": "RT",
+      "iataCode": "PAR",
+      "dupeId": 700060224,
+      "name": "MERCURE PARIS LAFAYETTE",
+      "hotelId": "RTPARFAY",
+      "geoCode": {
+        "latitude": 48.87281,
+        "longitude": 2.34493
+      },
+      "address": {
+        "countryCode": "FR"
+      },
+      "masterChainCode": "RT",
+      "lastUpdate": "2023-06-15T09:56:20",
+      "retailing": {
+        "sponsorship": {
+          "isSponsored": true
+        }
+      }
+    },
+    {
+      "chainCode": "BW",
+      "iataCode": "PAR",
+      "dupeId": 700057260,
+      "name": "BEST WESTERN GAILLON OPERA",
+      "hotelId": "BWPAR160",
+      "geoCode": {
+        "latitude": 48.8682,
+        "longitude": 2.33395
+      },
+      "address": {
+        "countryCode": "FR"
+      },
+      "masterChainCode": "EW",
+      "lastUpdate": "2023-06-15T09:57:36",
+      "retailing": {
+        "sponsorship": {
+          "isSponsored": true
+        }
+      }
+    },
+    {
+      "chainCode": "RT",
+      "iataCode": "PAR",
+      "dupeId": 700092120,
+      "name": "IBIS PARIS TOUR MONTPARNASSE",
+      "hotelId": "RTPARMAI",
+      "geoCode": {
+        "latitude": 48.84333,
+        "longitude": 2.32019
+      },
+      "address": {
+        "countryCode": "FR"
+      },
+      "masterChainCode": "RT",
+      "lastUpdate": "2023-06-15T09:59:12",
+      "retailing": {
+        "sponsorship": {
+          "isSponsored": true
+        }
+      }
+    },
+    {
+      "chainCode": "FG",
+      "iataCode": "PAR",
+      "dupeId": 700030505,
+      "name": "HOTEL PRINCE ALBERT LOUVRE",
+      "hotelId": "FGPARPAL",
+      "geoCode": {
+        "latitude": 48.866,
+        "longitude": 2.33157
+      },
+      "address": {
+        "countryCode": "FR"
+      },
+      "lastUpdate": "2023-06-15T11:06:37",
+      "retailing": {
+        "sponsorship": {
+          "isSponsored": true
+        }
+      }
+    },
+    {
+      "chainCode": "HN",
+      "iataCode": "PAR",
+      "dupeId": 502345064,
+      "name": "HN TEST PROPERTY1 FOR E2E TESTING",
+      "hotelId": "HNPARKGU",
+      "geoCode": {
+        "latitude": 48.85315,
+        "longitude": 2.34513
+      },
+      "address": {
+        "countryCode": "FR"
+      },
+      "lastUpdate": "2025-05-07T10:44:15",
+      "retailing": {
+        "sponsorship": {
+          "isSponsored": true
+        }
+      }
+    },
+    {
+      "chainCode": "FG",
+      "iataCode": "PAR",
+      "dupeId": 700059723,
+      "name": "55 MONTPARNASSE",
+      "hotelId": "FGPARKYR",
+      "geoCode": {
+        "latitude": 48.83358,
+        "longitude": 2.31775
+      },
+      "address": {
+        "countryCode": "FR"
+      },
+      "lastUpdate": "2023-06-15T10:27:13"
+    },
+
+    {
+  "data": [
+    {
+      "type": "hotel-offers",
+      "hotel": {
+        "type": "hotel",
+        "hotelId": "HNPARKGU",
+        "chainCode": "HN",
+        "dupeId": "502345064",
+        "name": "Test Property",
+        "cityCode": "PAR",
+        "latitude": 48.85315,
+        "longitude": 2.34513,
+        "contact": {
+          "phone": "+091 08351 895623148"
+        }
+      },
+      "available": true,
+      "offers": [
+        {
+          "id": "4EXI2TRHIV",
+          "checkInDate": "2025-07-12",
+          "checkOutDate": "2025-07-13",
+          "rateCode": "DTN",
+          "description": {
+            "text": "This is the best Weekend rate plan",
+            "lang": "EN"
+          },
+          "boardType": "ROOM_ONLY",
+          "room": {
+            "type": "A**",
+            "typeEstimated": {},
+            "description": {
+              "text": "This is the best Weekend rate plan\nRoom with sea view",
+              "lang": "EN"
+            }
+          },
+          "guests": {
+            "adults": 4
+          },
+          "price": {
+            "currency": "EUR",
+            "total": "66.00",
+            "taxes": [
+              {
+                "amount": "10.00",
+                "currency": "EUR"
+              },
+              {
+                "code": "MAINTENANCE_FEE",
+                "amount": "10.00",
+                "currency": "EUR",
+                "included": true
+              }
+            ],
+            "variations": {
+              "average": {
+                "total": "66.00"
+              },
+              "changes": [
+                {
+                  "startDate": "2025-07-12",
+                  "endDate": "2025-07-13",
+                  "total": "66.00"
+                }
+              ]
+            }
+          },
+          "policies": {
+            "refundable": {
+              "cancellationRefund": "UNKNOWN"
+            }
+          },
+          "self": "https://test.api.amadeus.com/v3/shopping/hotel-offers/4EXI2TRHIV",
+          "roomInformation": {
+            "description": "This is the best Weekend rate plan\nRoom with sea view",
+            "type": "A**",
+            "typeEstimated": {},
+            "name": {
+              "text": "Room with sea view"
+            }
+          }
+        }
+      ],
+      "self": "https://test.api.amadeus.com/v3/shopping/hotel-offers?hotelIds=HNPARKGU&adults=4&checkInDate=2025-07-12&paymentPolicy=NONE&roomQuantity=1"
+    }
+  ]
+}

@@ -9,15 +9,32 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@googlemaps/js-api-loader": "^1.16.8",
+    "@react-google-maps/api": "^2.20.6",
+    "@reduxjs/toolkit": "^2.8.2",
+    "amadeus": "^11.0.0",
+    "axios": "^1.10.0",
+    "bcrypt": "^6.0.0",
+    "cookie": "^1.0.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.17.0",
+    "mongoose": "^8.15.1",
+    "next": "15.3.3",
+    "next-auth": "^4.24.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.3.3"
+    "react-redux": "^9.2.0",
+    "redux-persist": "^6.0.0",
+    "swiper": "^11.2.8",
+    "tailwind-scrollbar-hide": "^4.0.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4"
   }
 }
