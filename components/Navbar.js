@@ -31,8 +31,8 @@ const Navbar = () => {
     return (
         <div className='flex border-b-2 border-gray-200 h-16 p-4 justify-around'>
             <Link href="/" className='profile flex items-center gap-2 ml-10'>
-                    <Image width="50" height="50" src="/images/logo.avif" alt="Logo" />
-                    <span className='font-bold text-[#F99262] text-2xl'>AI Planner</span>
+                <Image width="50" height="50" src="/images/logo.avif" alt="Logo" />
+                <span className='font-bold text-[#F99262] text-2xl'>AI Planner</span>
             </Link>
 
             <ul className='flex items-center gap-4 relative'>
@@ -68,7 +68,9 @@ const Navbar = () => {
                                 Profile
                             </Link>
                             <button
-                                onClick={() => signOut()}
+                                onClick={() =>
+                                    signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/login` })
+                                }
                                 className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
                             >
                                 Sign out
