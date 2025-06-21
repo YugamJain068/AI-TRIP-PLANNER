@@ -72,7 +72,7 @@ const Input_form = () => {
 
     useEffect(() => {
         if (status === 'unauthenticated') {
-            router.push('/login');
+            router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/login`);
         }
     }, [status, router]);
 

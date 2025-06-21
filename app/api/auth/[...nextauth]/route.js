@@ -26,7 +26,7 @@ const handler = NextAuth({
     })
   ],
   pages: {
-    signIn: "/login",
+    signIn: `${process.env.NEXT_PUBLIC_BASE_URL}/login`,
   },
   session: {
     strategy: "jwt",

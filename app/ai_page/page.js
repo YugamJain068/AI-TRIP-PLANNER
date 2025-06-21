@@ -31,7 +31,7 @@ export default function Home() {
 
       if (res.ok) {
         dispatch(setItineraryData(result));
-        router.push("/ai_display");
+        router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/ai_display`);
       } else {
         console.error("Itinerary generation failed:", result);
         setLoading(false);

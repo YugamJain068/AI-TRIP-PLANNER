@@ -45,7 +45,7 @@ const Signup = () => {
             console.log("Registration successful:", data.message);
             setMsg('Registration successful! Redirecting to login...');
             setTimeout(() => {
-                router.push('/login');
+                router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/login`);
             }, 2000);
         }
     }

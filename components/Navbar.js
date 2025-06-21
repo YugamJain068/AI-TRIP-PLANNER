@@ -13,7 +13,7 @@ const Navbar = () => {
 
     useEffect(() => {
         if (status === 'unauthenticated') {
-            router.push('/login');
+            router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/login`);
         }
 
         const handleClickOutside = (event) => {

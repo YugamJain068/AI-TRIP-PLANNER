@@ -26,7 +26,7 @@ const Login = () => {
             password: form.password,
         });
         if (res.ok) {
-            router.push("/");
+            router.push(`${process.env.NEXT_PUBLIC_BASE_URL}`);
         } else {
             setMsg("Invalid credentials");
         }
