@@ -6,7 +6,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-export default function AutoScrollAdventure({ width, height, right }) {
+export default function AutoScrollAdventure({ width, right, scale }) {
   const slides = [
     {
       img1: '/images/ai.jpg',
@@ -29,7 +29,7 @@ export default function AutoScrollAdventure({ width, height, right }) {
   ];
 
   return (
-    <div className={`${height} p-5 ${width}`}>
+    <div className={`h-screen p-5 ${width} ${scale}`}>
       <Swiper
         modules={[Autoplay, Pagination]}
         autoplay={{ delay: 5000 }}
@@ -41,23 +41,25 @@ export default function AutoScrollAdventure({ width, height, right }) {
           <SwiperSlide key={i}>
             <div className="bg-[#F6FCFE] w-full p-20 h-full flex flex-col gap-15 rounded-2xl overflow-hidden">
               <div className="relative w-full left-[100px]">
-                {/* Image 1 */}
                 <div className="relative h-[400px] w-[300px]">
                   <Image
                     src={slide.img1}
                     alt="img1"
                     fill
+                    sizes='300px'
                     className="rounded-2xl object-cover"
+                    priority={i === 0}
                   />
                 </div>
 
-                {/* Image 2 */}
                 <div className={`absolute ${right} bottom-[-100px] h-[350px] w-[260px] border-[8px] border-[#F6FCFE] rounded-2xl`}>
                   <Image
                     src={slide.img2}
                     alt="img2"
                     fill
+                    sizes="260px"
                     className="rounded-2xl object-cover"
+                    priority={i === 0}
                   />
                 </div>
               </div>

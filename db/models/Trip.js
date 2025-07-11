@@ -12,9 +12,14 @@ const transportSchema = new Schema({
 
 const itineraryActivitySchema = new Schema({
   name: String,
-  location: String,
+  location: {
+    name: String,
+    lat: Number,
+    lng: Number
+  },
   time: String,
-  transportFromPrevious: transportSchema
+  transportFromPrevious: transportSchema,
+  notes: String
 }, { _id: false });
 
 
@@ -35,6 +40,10 @@ const cityHotelSchema = new Schema({
 
 const citySchema = new Schema({
   name: String,
+  coordinates: {
+    lat: Number,
+    lng: Number
+  },
   startDate: String,
   endDate: String,
   activities: [itineraryDaySchema],
@@ -68,6 +77,9 @@ const tripSchema = new Schema({
     type: String,
     required: true
   },
+  bannerImageUrl: { type: String, required: true },
+  bannerPhotographerName: { type: String },
+  bannerPhotographerProfile: { type: String },
   adults: String,
   children: String,
   infants: String,

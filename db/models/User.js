@@ -5,48 +5,56 @@ const userSchema = new Schema({
   username: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
 
   email: {
     type: String,
     required: true,
     unique: true,
-    lowercase: true
+    lowercase: true,
   },
 
   password: {
     type: String,
-    required: true,
-    minlength: 6
+    minlength: 6,  // Minimum for credentials users
   },
 
   profileImage: {
     type: String,
-    default: ""
+    default: "",
+  },
+
+  oauthProvider: {
+    type: String,  // e.g., 'google', 'facebook', 'github'
+  },
+
+  oauthId: {
+    type: String,  // Provider's user ID
   },
 
   createdTrips: [{
     type: Schema.Types.ObjectId,
-    ref: 'Trip'
+    ref: 'Trip',
   }],
 
   registeredTrips: [{
     type: Schema.Types.ObjectId,
-    ref: 'Trip'
+    ref: 'Trip',
   }],
 
   role: {
     type: String,
     enum: ['user', 'admin'],
-    default: 'user'
+    default: 'user',
   },
 
   createdAt: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 const User = models.User || model('User', userSchema);
 export default User;
+

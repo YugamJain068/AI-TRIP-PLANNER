@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Capella Bangkok",
+    "location": "Bangkok, Thailand",
+    "country": "Thailand",
+    "reviewScore": 9.5,
+    "imageUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/328727709.jpg?k=912455743f5c74d140436e5e2546050790c56a7e93d4a484ffcd000d889c0619&o=",
+    "booking_link":"https://www.booking.com/hotel/th/capella-bangkok.html?aid=304142&label=gen173nr-1FCAEoggI46AdIM1gEaGyIAQGYATG4ARfIAQzYAQHoAQH4AQKIAgGoAgO4Ap-QrsMGwAIB0gIkMDVmNjRjOTUtYWI1OS00OGI4LTg3NTktNGM5ODI0MGFkOTIz2AIF4AIB&sid=89ab3f4c3ee4f872fb75f9b67c244b86&dest_id=-3414440&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1751880909&srpvid=44c24363405a0288&type=total&ucfs=1&"
+  },
+  {
+    "id": 2,
+    "name": "Passalacqua",
+    "location": "Moltrasio, Italy",
+    "country": "Italy",
+    "reviewScore": 9.6,
+    "imageUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/399151176.jpg?k=dc2b4764c98609eb8160bde5150dcd5426783fc432d5bc1140ffdafaf9d02269&o=",
+    "booking_link":"https://www.booking.com/hotel/it/passalacqua-moltrasio.html?aid=304142&label=gen173nr-1FCAEoggI46AdIM1gEaGyIAQGYATG4ARfIAQzYAQHoAQH4AQKIAgGoAgO4ApydrsMGwAIB0gIkZmNkNDkzZWYtMGY1OS00OGRlLTlhMGEtMmM1MzMyZGNlOTY42AIF4AIB&sid=89ab3f4c3ee4f872fb75f9b67c244b86&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1751879335&srpvid=4a34405035c20b17&type=total&ucfs=1&"
+  },
+  {
+    "id": 3,
+    "name": "Rosewood Hong Kong",
+    "location": "Hong Kong",
+    "country": "Hong Kong",
+    "reviewScore": 9.5,
+    "imageUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/168953041.jpg?k=59dbc371424d6434006ca7e3fe4ae2a1ec15c63002cc9c7e15bb740340f852d1&o=",
+    "booking_link":"https://www.booking.com/hotel/hk/rosewood-hong-kong.html?aid=304142&label=gen173nr-1FCAEoggI46AdIM1gEaGyIAQGYATG4ARfIAQzYAQHoAQH4AQKIAgGoAgO4ApydrsMGwAIB0gIkZmNkNDkzZWYtMGY1OS00OGRlLTlhMGEtMmM1MzMyZGNlOTY42AIF4AIB&sid=89ab3f4c3ee4f872fb75f9b67c244b86&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1751879542&srpvid=80464084d43f0915&type=total&ucfs=1&"
+  },
+  {
+    "id": 4,
+    "name": "Cheval Blanc",
+    "location": "Paris",
+    "country": "France",
+    "reviewScore": 9.5,
+    "imageUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/570774323.jpg?k=5fc9e42e82c18e13c1d30fca8bb903c9ec20bc92e10666bfa90a834027b82b56&o=",
+    "booking_link":"https://www.booking.com/hotel/fr/cheval-blanc-paris.html?aid=304142&label=gen173nr-1FCAEoggI46AdIM1gEaGyIAQGYATG4ARfIAQzYAQHoAQH4AQKIAgGoAgO4ApydrsMGwAIB0gIkZmNkNDkzZWYtMGY1OS00OGRlLTlhMGEtMmM1MzMyZGNlOTY42AIF4AIB&sid=89ab3f4c3ee4f872fb75f9b67c244b86&dest_id=7393303&dest_type=hotel&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1751879685&srpvid=4a3440fe84dc0703&type=total&ucfs=1&"
+  },
+  {
+    "id": 5,
+    "name": "Raffles Singapore",
+    "location": "Singapore",
+    "country": "Singapore",
+    "reviewScore": 9.7,
+    "imageUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/260384694.jpg?k=266e84eda8e73591a5c4a7c25f29775ee304349a310eff011e93d3ec8f256d0b&o=",
+    "booking_link":"https://www.booking.com/hotel/sg/raffles.html?aid=304142&label=gen173nr-1FCAEoggI46AdIM1gEaGyIAQGYATG4ARfIAQzYAQHoAQH4AQKIAgGoAgO4ApydrsMGwAIB0gIkZmNkNDkzZWYtMGY1OS00OGRlLTlhMGEtMmM1MzMyZGNlOTY42AIF4AIB&sid=89ab3f4c3ee4f872fb75f9b67c244b86&dest_id=25054&dest_type=hotel&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1751879733&srpvid=118641172ebf0322&type=total&ucfs=1&"
+  },
+  {
+    "id": 6,
+    "name": "Soneva Fushi",
+    "location": "Maldives",
+    "country": "Maldives",
+    "reviewScore": 9.7,
+    "imageUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/321459533.jpg?k=d6e342cd7443324774c636db0d369e261794ba97c559d6ae7a40e4ba46f78321&o=",
+    "booking_link":"https://www.booking.com/hotel/mv/soneva-fushi.html?aid=304142&label=gen173nr-1FCAEoggI46AdIM1gEaGyIAQGYATG4ARfIAQzYAQHoAQH4AQKIAgGoAgO4ApydrsMGwAIB0gIkZmNkNDkzZWYtMGY1OS00OGRlLTlhMGEtMmM1MzMyZGNlOTY42AIF4AIB&sid=89ab3f4c3ee4f872fb75f9b67c244b86&dest_id=241098&dest_type=hotel&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1751880036&srpvid=fd8041aec37d0b00&type=total&ucfs=1&"
+  },
+  {
+    "id": 7,
+    "name": "Atlantis The Royal",
+    "location": "Dubai,UAE",
+    "country": "UAE",
+    "reviewScore": 9.1,
+    "imageUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/534061997.jpg?k=9b47f6c7e61f2be60830d61c1f5d9562dd51a6f9288240653cc4e0515a3e4941&o=",
+    "booking_link":"https://www.booking.com/hotel/ae/the-royal-atlantis.html?aid=304142&label=gen173nr-1FCAEoggI46AdIM1gEaGyIAQGYATG4ARfIAQzYAQHoAQH4AQKIAgGoAgO4ApydrsMGwAIB0gIkZmNkNDkzZWYtMGY1OS00OGRlLTlhMGEtMmM1MzMyZGNlOTY42AIF4AIB&sid=89ab3f4c3ee4f872fb75f9b67c244b86&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1751880088&srpvid=01ee41c8ec2f0250&type=total&ucfs=1&"
+  },
+  {
+    "id": 8,
+    "name": "NIHI Sumba",
+    "location": "West Sumba, 87272 Watukarere",
+    "country": "Indonesia",
+    "reviewScore": 9.4,
+    "imageUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/211621769.jpg?k=50a55e3d598695146481dd2f336e094b50a9fff2dee4e3919e372a65451ecde9&o=",
+    "booking_link":"https://www.booking.com/hotel/id/nihi-sumba.html?aid=304142&label=gen173nr-1FCAEoggI46AdIM1gEaGyIAQGYATG4ARfIAQzYAQHoAQH4AQKIAgGoAgO4ApydrsMGwAIB0gIkZmNkNDkzZWYtMGY1OS00OGRlLTlhMGEtMmM1MzMyZGNlOTY42AIF4AIB&sid=89ab3f4c3ee4f872fb75f9b67c244b86&dest_id=716430&dest_type=hotel&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1751880191&srpvid=adca41fb557603d6&type=total&ucfs=1&"
+  },
+  {
+    "id": 9,
+    "name": "Mandarin Oriental Bangkok",
+    "location": "Bangkok, Thailand",
+    "country": "Thailand",
+    "reviewScore": 9.5,
+    "imageUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/589374200.jpg?k=27fc70136f5e1d873384dd5f4d2e8603ab0668a07944f9889a3bf7901ef9b35e&o=",
+    "booking_link":"https://www.booking.com/hotel/th/mandarin-oriental-bangkok.html?aid=304142&label=gen173nr-1FCAEoggI46AdIM1gEaGyIAQGYATG4ARfIAQzYAQHoAQH4AQKIAgGoAgO4ApydrsMGwAIB0gIkZmNkNDkzZWYtMGY1OS00OGRlLTlhMGEtMmM1MzMyZGNlOTY42AIF4AIB&sid=89ab3f4c3ee4f872fb75f9b67c244b86&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1751880524&srpvid=7f1842a2d7fd0484&type=total&ucfs=1&"
+  },
+  {
+    "id": 10,
+    "name": "Raffles London at The OWO",
+    "location": "London, SW1A 2BX, United Kingdom",
+    "country": "United Kingdom",
+    "reviewScore": 9.5,
+    "imageUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/682343635.jpg?k=8f43d8364d946ebf4f9c25911e9b7448ec310becfe8c767a771b57cd7b0cb837&o=",
+    "booking_link":"https://www.booking.com/hotel/gb/raffles-london-at-the-owo.html?aid=304142&label=gen173nr-1FCAEoggI46AdIM1gEaGyIAQGYATG4ARfIAQzYAQHoAQH4AQKIAgGoAgO4ApydrsMGwAIB0gIkZmNkNDkzZWYtMGY1OS00OGRlLTlhMGEtMmM1MzMyZGNlOTY42AIF4AIB&sid=89ab3f4c3ee4f872fb75f9b67c244b86&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1751880617&srpvid=bd9142cd96c4044f&type=total&ucfs=1&"
+  }
+]

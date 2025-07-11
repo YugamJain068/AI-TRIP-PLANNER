@@ -3,9 +3,26 @@ import connectDb from "@/db/connectDb";
 import Trip from "@/db/models/Trip";
 import { searchFlights } from "@/lib/search_flights";
 import { searchHotels } from "@/lib/search_hotels";
-import { search_hotel } from '@/lib/search_hotel2';
+import axios from 'axios';
+import { fetchUnsplashImage } from '@/lib/fetchUnsplashImage';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+async function trackUnsplashDownload(downloadLocation) {
+  if (!downloadLocation) return;
+
+  try {
+    await axios.get(downloadLocation, {
+      headers: {
+        Authorization: `Client-ID ${process.env.UNSPLASH_SECRET_KEY}`,
+      },
+    });
+    console.log("Unsplash download tracked successfully.");
+  } catch (err) {
+    console.error("Error tracking Unsplash download:", err.message || err);
+  }
+}
+
 
 const cleanAndParseJSON = (rawString) => {
   try {
@@ -152,9 +169,9 @@ async function fetchWithRetry(fn, retries = 3, delayMs = 500) {
 
 export async function POST(req) {
   const budgetMap = {
-    low: "$0–$1000",
-    medium: "$1000–$2500",
-    high: "$2500+"
+    low: "₹0 – ₹2,00,000",
+    medium: "₹2,00,000 – ₹5,00,000",
+    high: "₹5,00,000+"
   };
 
 
@@ -165,7 +182,7 @@ export async function POST(req) {
     const userPrompt = `
 You are a professional AI travel planner.
 
-Create a detailed, multi-city travel itinerary in **EXACTLY** the following JSON format. The itinerary is for "${formData.selected_member}" traveler(s), going on a ${formData.days}-day trip, starting from "${formData.departure}" and visiting: ${formData.destination}. Their interests include: ${formData.selectedActivities.join(", ")}. The budget is "${readableBudget}".
+Create a detailed, multi-city travel itinerary in **EXACTLY** the following JSON format. The itinerary is for "${formData.selected_member}" traveler(s), going on a ${formData.days}-day trip, starting from "${formData.departure}" and visiting: ${formData.destination}. The start date is ${formData.date} and end date should be automatically calculated based on trip length (${formData.days} days). Their interests include: ${formData.selectedActivities.join(", ")}. The budget is "${readableBudget}".
 
 If you break ANY rule below, the entire output is INVALID and will be discarded. This itinerary will be machine-validated.
 
@@ -186,6 +203,10 @@ IMPORTANT RULES (you MUST follow all of these):
 11. If travelling.modeOfTransport is "Flight", you MUST include valid "departure_airport_city_IATAcode" and "destination_airport_city_IATAcode". If not a flight, both should be null (not string "null").
 12. Provide realistic durations for all transport entries (e.g., "10 mins", "45 mins")
 13. Do not include any trailing commas or extra content.
+14. Provide the 'notes' field for activites,hotels and travelling
+15. ⚠️ You MUST provide valid geolocation coordinates for each activity using a "location" object with lat and lng (numbers only, not strings).
+16. ⚠️ You MUST provide valid "coordinates" for each city using a "coordinates" object with lat and lng (numbers only, not strings). These represent the city center and will be used to center maps.
+
 
 "${formData.departure}" is the starting point — only include it in the "cities" array if it's also one of the visit destinations.
 
@@ -194,10 +215,14 @@ JSON FORMAT TO FOLLOW EXACTLY (must be minified in output):
 {
   "tripName": "Trip Title",
   "startDate": "${formData.date}",
-  "endDate": "YYYY-MM-DD",
+  "endDate": "AUTO_CALCULATE_BASED_ON_STARTDATE_AND_DAYS",
   "cities": [
     {
       "name": "City Name",
+      "coordinates": {
+        "lat": 48.8566,
+        "lng": 2.3522
+      },
       "startDate": "YYYY-MM-DD",
       "endDate": "YYYY-MM-DD",
       "activities": [
@@ -206,20 +231,31 @@ JSON FORMAT TO FOLLOW EXACTLY (must be minified in output):
           "plan": [
             {
               "name": "Activity Title",
-              "location": "Location Name",
+              "location": {
+                "name": "Location Name",
+                "lat": 48.8584,
+                "lng": 2.2945
+              },
+              
               "time": "10:00 AM",
-              "transportFromPrevious": null
+              "transportFromPrevious": null,
+              "notes":"Activity related notes"
             },
             {
               "name": "Next Activity",
-              "location": "Next Location",
+              "location": {
+                "name": "Location Name",
+                "lat": 48.8584,
+                "lng": 2.2945
+              },
               "time": "1:00 PM",
               "transportFromPrevious": {
                 "mode": "Taxi",
                 "from": "Previous Location",
                 "to": "Next Location",
                 "duration": "15 mins"
-              }
+              },
+              "notes":"Activity related notes"
             }
           ]
         }
@@ -263,116 +299,87 @@ JSON FORMAT TO FOLLOW EXACTLY (must be minified in output):
     const parsedItinerary = await generateAndValidateItinerary(userPrompt, formData.days, formData.departure);
 
 
-    // const flightRequests = parsedItinerary.travelling
-    //   .filter(segment => segment.modeOfTransport === "Flight")
-    //   .map(async (segment) => {
-    //     const fromIATA = segment.departure_airport_city_IATAcode;
-    //     const toIATA = segment.destination_airport_city_IATAcode;
 
-    //     if (!fromIATA || !toIATA) {
-    //       console.warn(`Missing IATA code for: ${segment.from} or ${segment.to}`);
-    //       return null;
-    //     }
+    const hotelResults = [];
 
-    //     try {
-    //       const flights = await searchFlights({
-    //         from: fromIATA,
-    //         to: toIATA,
-    //         departureDate: segment.date,
-    //         adults: formData.adults,
-    //         children: formData.children,
-    //         infants: formData.infants
-    //       });
+    for (const segment of parsedItinerary.hotels) {
+      try {
+        const hotels = await fetchWithRetry(() =>
+          searchHotels({
+            cityName: segment.city,
+            checkInDate: segment.checkIn,
+            checkOutDate: segment.checkOut,
+            adults: formData.adults,
+          })
+        );
 
-    //       return {
-    //         from: segment.from,
-    //         to: segment.to,
-    //         date: segment.date,
-    //         flights,
+        hotelResults.push({
+          checkInDate: segment.checkIn,
+          checkOutDate: segment.checkOut,
+          city: segment.city,
+          hotels,
+        });
+      } catch (err) {
+        console.error("Error fetching hotels for:", segment.city, err.message || err);
+        hotelResults.push({
+          checkInDate: segment.checkIn,
+          checkOutDate: segment.checkOut,
+          city: segment.city,
+          hotels: [],
+        });
+      }
 
-    //       };
-    //     } catch (err) {
-    //       console.error("Error fetching flights for:", segment, err);
-    //       return null;
-    //     }
-    //   });
+      await delay(150); // Throttle between each request to respect 10 TPS
+    }
 
-    // const flightResults = (await Promise.all(flightRequests)).filter(Boolean);
+    const flightResults = [];
 
-    // const hotelResults = [];
+    for (const segment of parsedItinerary.travelling) {
+      if (segment.modeOfTransport !== "Flight") continue;
 
-    // for (const segment of parsedItinerary.hotels) {
-    //   try {
-    //     const hotels = await fetchWithRetry(() =>
-    //       searchHotels({
-    //         city: segment.city,
-    //         checkInDate: segment.checkIn,
-    //         checkOutDate: segment.checkOut,
-    //         adults: formData.adults,
-    //       })
-    //     );
+      const fromIATA = segment.departure_airport_city_IATAcode;
+      const toIATA = segment.destination_airport_city_IATAcode;
 
-    //     hotelResults.push({
-    //       checkInDate: segment.checkIn,
-    //       checkOutDate: segment.checkOut,
-    //       city: segment.city,
-    //       hotels,
-    //     });
-    //   } catch (err) {
-    //     console.error("Error fetching hotels for:", segment.city, err.message || err);
-    //     hotelResults.push({
-    //       checkInDate: segment.checkIn,
-    //       checkOutDate: segment.checkOut,
-    //       city: segment.city,
-    //       hotels: [],
-    //     });
-    //   }
+      if (!fromIATA || !toIATA) {
+        console.warn(`Missing IATA code for: ${segment.from} or ${segment.to}`);
+        continue;
+      }
 
-    //   await delay(150); // Throttle between each request to respect 10 TPS
-    // }
+      try {
+        const flights = await fetchWithRetry(() =>
+          searchFlights({
+            from: fromIATA,
+            to: toIATA,
+            departureDate: segment.date,
+            adults: formData.adults,
+            children: formData.children,
+            infants: formData.infants
+          })
+        );
 
-    // console.log(hotelResults)
+        flightResults.push({
+          from: segment.from,
+          to: segment.to,
+          date: segment.date,
+          flights,
+        });
 
-    // adjust import path as needed
+      } catch (err) {
+        console.error("Error fetching flights for:", segment, err);
+      }
 
-    // const hotelResults = [];
+      await delay(150); // Delay to respect rate limits (e.g., 10 TPS)
+    }
 
-    // for (const segment of parsedItinerary.hotels) {
-    //   try {
-    //     const hotels = await fetchWithRetry(() =>
-    //       search_hotel({
-    //         cityCode: segment.cityCode, // must be IATA code like 'LON'
-    //         checkInDate: segment.checkIn,
-    //         checkOutDate: segment.checkOut,
-    //         adults: formData.adults,
-    //       })
-    //     );
-
-    //     hotelResults.push({
-    //       checkInDate: segment.checkIn,
-    //       checkOutDate: segment.checkOut,
-    //       city: segment.city,
-    //       hotels,
-    //     });
-    //   } catch (err) {
-    //     console.error("Error fetching hotels for:", segment.city, err.message || err);
-    //     hotelResults.push({
-    //       checkInDate: segment.checkIn,
-    //       checkOutDate: segment.checkOut,
-    //       city: segment.city,
-    //       hotels: [],
-    //     });
-    //   }
-
-    //   await delay(150); // Respect Amadeus TPS limits
-    // }
-
-    // console.log(hotelResults);
-
+    const bannerImage = await fetchUnsplashImage(formData.destination);
+    await trackUnsplashDownload(bannerImage.download_location);
 
     const newTrip = await Trip.create({
       userId: formData.userID,
       title: parsedItinerary.tripName,
+      bannerImageUrl: bannerImage.url,
+      bannerPhotographerName: bannerImage.photographerName,
+      bannerPhotographerProfile: bannerImage.photographerProfile,
       adults: formData.adults,
       children: formData.children,
       infants: formData.infants,
@@ -389,9 +396,9 @@ JSON FORMAT TO FOLLOW EXACTLY (must be minified in output):
 
 
     return new Response(JSON.stringify({
-      itinerary: parsedItinerary,
-      hotels: [],
-      flights: []
+      itinerary: JSON.parse(JSON.stringify(newTrip)),
+      hotels: hotelResults,
+      flights: flightResults
     }), {
       status: 200,
       headers: { "Content-Type": "application/json" }

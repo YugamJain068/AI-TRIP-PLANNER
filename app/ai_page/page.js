@@ -4,10 +4,13 @@ import Input_form from "@/components/Input_form";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from "react";
-import {resetFormData } from '@/store/formSlice';
 import { setItineraryData } from '@/store/itinerarySlice';
+import AutoScrollAdventure from "@/components/AutoScrollAdventure";
+import DesignerLoader from "@/components/DesignerLoader";
+import withAuth from "@/lib/withAuth";
 
-export default function Home() {
+
+function Home() {
   const dispatch = useDispatch();
   const formData = useSelector((state) => state.form.formData);
   const router = useRouter();
@@ -30,7 +33,19 @@ export default function Home() {
       const result = await res.json();
 
       if (res.ok) {
-        dispatch(setItineraryData(result));
+        const cityWiseHotels = {};
+        result.hotels.forEach(h => {
+          if (!cityWiseHotels[h.city]) cityWiseHotels[h.city] = [];
+
+          const hotelList = h.hotels?.results || []; // <-- Extract just the hotel results
+          cityWiseHotels[h.city].push(...hotelList);
+        });
+
+        dispatch(setItineraryData({
+          itinerary: result.itinerary,
+          hotels: cityWiseHotels,
+          flights: result.flights
+        }));
         router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/ai_display`);
       } else {
         console.error("Itinerary generation failed:", result);
@@ -50,33 +65,48 @@ export default function Home() {
     }
   }, [formData, hasSubmitted]);
 
-  
+  useEffect(() => {
+    document.body.style.overflow = "hidden"; // lock
+
+    return () => {
+      document.body.style.overflow = "auto"; // unlock on navigate
+    };
+  }, []);
+
+
 
   return (
     <>
-      <Navbar />
-      <div className="flex p-8">
-        <div className="w-[50%] h-screen p-10">
-          {loading ? (
-            <div className="flex justify-center items-center h-full text-xl">
-              Loading your trip...
-            </div>
-          ) : (
-            <Input_form />
-          )}
-        </div>
-        <div className="w-[50%] bg-blue-400 h-screen flex items-end p-4">
-          <button className="bg-red-500 text-white px-4 py-2 rounded"
-            onClick={() => {
-              dispatch(resetFormData());
-              dispatch(setItineraryData({ itinerary: null, hotels: [], flights: [] }));
-              setLoading(false);
-            }}
-          >
-            Reset Form
-          </button>
+      <div>
+        <Navbar />
+        <div className="flex overflow-auto scrollbar-hide">
+          <div className="w-[50%] h-screen p-10 overflow-y-auto scrollbar-hide">
+            {loading ? (
+              <div className='fixed inset-0 bg-white/80 z-50 flex flex-col justify-center items-center'>
+                <h1 className='text-2xl mb-4'>Preparing Your <span className="text-[#F99262] font-bold">Trip</span>...</h1>
+                <span className='mt-2 mb-4 text-sm text-red-500 font-semibold'>
+                  ⚠️ Please do not refresh or leave the page.
+                </span>
+                <DesignerLoader />
+              </div>
+            ) : (
+              <div>
+                <Input_form />
+              </div>
+            )}
+
+          </div>
+          <div className="w-[50%] overflow-hidden sticky h-screen">
+            <AutoScrollAdventure
+              width="w-[100%]"
+              right="right-[100px]"
+              scale="scale-85"
+            />
+          </div>
         </div>
       </div>
     </>
   );
 }
+export default withAuth(Home);
+
