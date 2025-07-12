@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 import DesignerLoader from "@/components/DesignerLoader";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-
+import 'react-toastify/dist/ReactToastify.css';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

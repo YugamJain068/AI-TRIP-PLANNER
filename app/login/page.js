@@ -15,11 +15,11 @@ const Login = () => {
 
 
     const handleOAuthLogin = async (provider) => {
-    setLoading(true);
-    await signIn(provider, {
-        callbackUrl: `/oauth-callback?provider=${provider}`,
-    });
-};
+        setLoading(true);
+        await signIn(provider, {
+            callbackUrl: `/oauth-callback?provider=${provider}`,
+        });
+    };
 
     const handleChange = (e) => {
         setform({ ...form, [e.target.name]: e.target.value })
@@ -73,12 +73,14 @@ const Login = () => {
                     scale="scale-100"
                 />
                 <div className='h-screen p-20 w-[45%] flex flex-col items-center'>
-                    <span className='flex justify-center items-center gap-2 text-[#F99262] font-semibold text-3xl'>
-                        <div className='h-[70px] w-[70px] overflow-hidden relative'>
-                            <Image sizes='70px' priority fill className='h-[70px] object-cover' src="/images/logo.avif" alt="logo" />
-                        </div>
-                        TripForge-AI
-                    </span>
+                    <Link href="/">
+                        <span className='flex justify-center items-center gap-2 text-[#F99262] font-semibold text-3xl'>
+                            <div className='h-[70px] w-[70px] overflow-hidden relative'>
+                                <Image sizes='70px' priority fill className='h-[70px] object-cover' src="/images/logo.avif" alt="logo" />
+                            </div>
+                            TripForge-AI
+                        </span>
+                    </Link>
                     <h1 className='text-5xl mt-8 font-semibold'>Welcome to <span className='text-[#F99262]'>Travelling</span></h1>
                     <p className='mt-4 text-center text-[#626262]'>Login to access travel deals, manage your booking, and place your vacation hassle free</p>
                     <form className='mt-6 gap-4 flex flex-col' onSubmit={handleSubmit}>
@@ -89,9 +91,6 @@ const Login = () => {
                             <div className='flex justify-center scale-60'><DesignerLoader /></div>
                         )}
                     </form>
-                    <div className='w-full flex justify-between items-center m-6 relative'>
-                        <span className='text-[#F99262] font-semibold cursor-pointer flex absolute right-7'>Forgot Password?</span>
-                    </div>
 
                     <span className='mt-5 text-[#626262]'>Don&apos;t have an account?
                         <span className='text-[#F99262] font-semibold cursor-pointer'>
