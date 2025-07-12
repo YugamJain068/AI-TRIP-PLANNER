@@ -30,12 +30,6 @@ const Navbar = ({ hideBorder = false }) => {
   }, []);
 
   // ✅ Redirect Protection: No redirect on login/signup/home
-  useEffect(() => {
-    const publicPaths = ['/', '/login', '/signup'];
-    if (!publicPaths.includes(pathname) && status === 'unauthenticated') {
-      router.push('/login');
-    }
-  }, [status, pathname, router]);
 
   return (
     <div className={`flex h-16 p-4 justify-around ${hideBorder ? '' : 'border-b-2 border-gray-200'}`}>

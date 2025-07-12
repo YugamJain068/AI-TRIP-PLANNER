@@ -2,7 +2,6 @@
 import React from 'react'
 import { useState, useRef, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { setFormData } from '../store/formSlice';
 import { setHasSubmitted } from '@/store/formSlice';
@@ -12,7 +11,6 @@ import { useMapsLibrary } from "@vis.gl/react-google-maps";
 
 
 const Input_form = () => {
-    const router = useRouter();
     const dispatch = useDispatch();
     const placesLibrary = useMapsLibrary('places');
 
@@ -82,12 +80,6 @@ const Input_form = () => {
         { label: 'Nature & Wildlife', value: 'nature_wildlife', image: '/images/wildlife.png' },
         { label: 'Eco & Sustainable Travel', value: 'eco_travel', image: '/images/eco-tourism.png' }
     ];
-
-    useEffect(() => {
-        if (status === 'unauthenticated') {
-            router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/login`);
-        }
-    }, [status, router]);
 
 
     useEffect(() => {
