@@ -154,7 +154,6 @@ const Input_form = () => {
         }
 
         if (session) {
-            console.log("Submitting form...");
             dispatch(setFormData(formData));
             dispatch(setHasSubmitted(true));
         }

@@ -1,93 +1,63 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { Geist, Geist_Mono } from "next/font/google";
+// app/layout.js
 import "./globals.css";
-import SessionWrapper from "@/components/SessionWrapper";
-import Providers from "@/store/provider";
-import GoogleMapsProvider from "@/components/GoogleMapsProvider";
-import { AnimatePresence, motion } from "framer-motion";
-import { usePathname } from "next/navigation";
-import DesignerLoader from "@/components/DesignerLoader";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import 'react-toastify/dist/ReactToastify.css';
+import { Poppins } from "next/font/google";
+import LayoutWrapper from "@/components/LayoutWrapper"; // ✅ normal import
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
   subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-poppins",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+export const metadata = {
+  title: "TripForge AI – Smart Travel Itineraries",
+  description: "Plan smarter, faster, and better trips with AI-powered multi-city itineraries tailored to your needs.",
+  keywords: [
+    "AI travel planner",
+    "smart itinerary",
+    "trip planner",
+    "vacation AI",
+    "travel assistant",
+    "multi-city travel",
+    "TripForge AI",
+    "Hotel Booking",
+    "Flight Booking"
+  ],
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
+  openGraph: {
+    title: "TripForge AI – Your AI-Powered Travel Assistant",
+    description: "Get intelligent trip plans and optimized itineraries with TripForge AI.",
+    url: "https://tripforge-ai.vercel.app",
+    siteName: "TripForge AI",
+    images: [
+      {
+        url: "/images/logopng.png", 
+        width: 1200,
+        height: 630,
+        alt: "TripForge AI Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TripForge AI – Smart Travel Planning",
+    description: "Use AI to plan your perfect trip. Discover destinations, hotels, and create personalized itineraries.",
+    images: ["/images/logopng.png"],
+    creator: "@TripForgeAI",
+  },
+  icons: {
+    icon: "/images/google.png",
+  },
+};
+
 
 export default function RootLayout({ children }) {
-  const pathname = usePathname();
-  const [loading, setLoading] = useState(true);
-  const allowedPaths = ["/login", "/signup"];  // 👈 allowed paths
-
-  // Initial Page Load
-  useEffect(() => {
-    const timeout = setTimeout(() => setLoading(false), 800);
-    return () => clearTimeout(timeout);
-  }, []);
-
-  // On Route Change (skip loader on login/signup)
-  useEffect(() => {
-    if (!allowedPaths.includes(pathname)) {
-      setLoading(true);
-      const timeout = setTimeout(() => setLoading(false), 500);
-      return () => clearTimeout(timeout);
-    } else {
-      setLoading(false);
-    }
-  }, [pathname]);
-
-  console.log("🚨 Pathname:", pathname, "Loading:", loading);
-
-  // Show loader (skip loader on login/signup)
-  if (loading && !allowedPaths.includes(pathname)) {
-    return (
-      <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-white"
-          >
-            <DesignerLoader />
-          </motion.div>
-        </body>
-      </html>
-    );
-  }
-
-  // Normal Render
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <GoogleMapsProvider>
-          <SessionWrapper>
-            <Providers>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={pathname}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  {!allowedPaths.includes(pathname) && <Navbar />}
-                  {children}
-                  {!allowedPaths.includes(pathname) && <Footer />}
-                </motion.div>
-              </AnimatePresence>
-            </Providers>
-          </SessionWrapper>
-        </GoogleMapsProvider>
+      <body className={`${poppins.variable} antialiased`}>
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );

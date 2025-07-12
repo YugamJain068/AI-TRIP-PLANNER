@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@fontsource/poppins";
 .scrollbar-hide {
   overflow-x: auto; /* or overflow-y:auto; or overflow: auto; */
   -ms-overflow-style: none;
@@ -54,4 +55,7 @@
 }
 html {
   scroll-behavior: smooth;
+}
+:root {
+  font-family: var(--font-poppins);
 }

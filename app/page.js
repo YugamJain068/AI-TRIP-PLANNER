@@ -18,7 +18,6 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(setHasSubmitted(false));
-    console.log(session?.user);
   }, []);
 
   useEffect(() => {

@@ -17,7 +17,6 @@ async function trackUnsplashDownload(downloadLocation) {
         Authorization: `Client-ID ${process.env.UNSPLASH_SECRET_KEY}`,
       },
     });
-    console.log("Unsplash download tracked successfully.");
   } catch (err) {
     console.error("Error tracking Unsplash download:", err.message || err);
   }
