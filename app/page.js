@@ -1,10 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Navbar from "@/components/Navbar";
 import Link from "next/link";
 import Destination_homepage from "@/components/Destination_homepage";
 import Hotels_homepage from "@/components/Hotels_homepage";
-import Footer from "@/components/Footer";
 import Image from "next/image";
 import { useDispatch, useSelector } from 'react-redux';
 import { setHasSubmitted } from '@/store/formSlice';
@@ -37,7 +35,6 @@ export default function Home() {
 
   return (
     <>
-      <Navbar disableAuthRedirect={true}/>
       <div className="h-screen w-full overflow-visible flex ">
         {/* Left-side Content */}
         <div className="flex max-h-[761px] w-[55%] scale-110">
@@ -111,8 +108,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </>
   );
 }

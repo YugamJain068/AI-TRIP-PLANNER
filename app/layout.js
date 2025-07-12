@@ -8,6 +8,9 @@ import GoogleMapsProvider from "@/components/GoogleMapsProvider";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import DesignerLoader from "@/components/DesignerLoader";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -77,7 +80,9 @@ export default function RootLayout({ children }) {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
                 >
+                  {!allowedPaths.includes(pathname) && <Navbar />}
                   {children}
+                  {!allowedPaths.includes(pathname) && <Footer />}
                 </motion.div>
               </AnimatePresence>
             </Providers>

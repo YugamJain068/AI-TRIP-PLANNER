@@ -1,5 +1,4 @@
 "use client";
-import Navbar from "@/components/Navbar";
 import Input_form from "@/components/Input_form";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from 'react-redux';
@@ -65,20 +64,11 @@ function Home() {
     }
   }, [formData, hasSubmitted]);
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden"; // lock
-
-    return () => {
-      document.body.style.overflow = "auto"; // unlock on navigate
-    };
-  }, []);
 
 
 
   return (
     <>
-      <div>
-        <Navbar />
         <div className="flex overflow-auto scrollbar-hide">
           <div className="w-[50%] h-screen p-10 overflow-y-auto scrollbar-hide">
             {loading ? (
@@ -104,7 +94,6 @@ function Home() {
             />
           </div>
         </div>
-      </div>
     </>
   );
 }

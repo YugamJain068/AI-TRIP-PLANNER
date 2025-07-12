@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setHasSubmitted } from '@/store/formSlice';
-import Navbar from '@/components/Navbar';
 import ActivityCard from '@/components/ActivityCard';
 import Image from 'next/image';
 import Map_display from '@/components/Map_display';
@@ -87,7 +86,6 @@ const AiDisplay = () => {
   if (status !== 'authenticated' || !session?.user || !itinerary || session.user.id !== itinerary.userId) {
     return (
       <div>
-        <Navbar />
         <div className='flex flex-col justify-center items-center gap-4 mt-20'>
           <h1 className='text-xl font-semibold'>No Trips Found</h1>
           <p className='text-sm text-gray-400'>Start planning your next adventure!</p>
@@ -101,7 +99,6 @@ const AiDisplay = () => {
   return (
     <>
       <div>
-        <Navbar />
         <div className="flex p-8 gap-3 overflow-auto scrollbar-hide">
           <div className="w-[55%] h-[80vh] hover:shadow-xl transition-transform hover:scale-[1.01]">
             <div className='rounded-2xl overflow-hidden shadow-lg'>
