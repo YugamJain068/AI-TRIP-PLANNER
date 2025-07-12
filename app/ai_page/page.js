@@ -32,25 +32,14 @@ function Home() {
       const result = await res.json();
 
       if (res.ok) {
-        const cityWiseHotels = {};
-        result.hotels.forEach(h => {
-          if (!cityWiseHotels[h.city]) cityWiseHotels[h.city] = [];
-
-          const hotelList = h.hotels?.results || []; // <-- Extract just the hotel results
-          cityWiseHotels[h.city].push(...hotelList);
-        });
-
         dispatch(setItineraryData({
-          itinerary: result.itinerary,
-          hotels: cityWiseHotels,
-          flights: result.flights
+          itinerary: result.itinerary
         }));
         router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/ai_display`);
       } else {
         console.error("Itinerary generation failed:", result);
         setLoading(false);
       }
-
     } catch (error) {
       console.error("API error:", error);
       setLoading(false);
@@ -69,31 +58,31 @@ function Home() {
 
   return (
     <>
-        <div className="flex overflow-auto scrollbar-hide">
-          <div className="w-[50%] h-screen p-10 overflow-y-auto scrollbar-hide">
-            {loading ? (
-              <div className='fixed inset-0 bg-white/80 z-50 flex flex-col justify-center items-center'>
-                <h1 className='text-2xl mb-4'>Preparing Your <span className="text-[#F99262] font-bold">Trip</span>...</h1>
-                <span className='mt-2 mb-4 text-sm text-red-500 font-semibold'>
-                  ⚠️ Please do not refresh or leave the page.
-                </span>
-                <DesignerLoader />
-              </div>
-            ) : (
-              <div>
-                <Input_form />
-              </div>
-            )}
+      <div className="flex overflow-auto scrollbar-hide">
+        <div className="w-[50%] h-screen p-10 overflow-y-auto scrollbar-hide">
+          {loading ? (
+            <div className='fixed inset-0 bg-white/80 z-50 flex flex-col justify-center items-center'>
+              <h1 className='text-2xl mb-4'>Preparing Your <span className="text-[#F99262] font-bold">Trip</span>...</h1>
+              <span className='mt-2 mb-4 text-sm text-red-500 font-semibold'>
+                ⚠️ Please do not refresh or leave the page.
+              </span>
+              <DesignerLoader />
+            </div>
+          ) : (
+            <div>
+              <Input_form />
+            </div>
+          )}
 
-          </div>
-          <div className="w-[50%] overflow-hidden sticky h-screen">
-            <AutoScrollAdventure
-              width="w-[100%]"
-              right="right-[100px]"
-              scale="scale-85"
-            />
-          </div>
         </div>
+        <div className="w-[50%] overflow-hidden sticky h-screen">
+          <AutoScrollAdventure
+            width="w-[100%]"
+            right="right-[100px]"
+            scale="scale-85"
+          />
+        </div>
+      </div>
     </>
   );
 }

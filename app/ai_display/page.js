@@ -9,8 +9,12 @@ import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { fetchUnsplashImage } from '@/lib/fetchUnsplashImage';
 import withAuth from '@/lib/withAuth';
+import { setItineraryData } from '@/store/itinerarySlice';
+import BlurAreaLoader from '@/components/BlurAreaLoader';
 
 const AiDisplay = () => {
+  const [hasFetched, setHasFetched] = useState(false);
+  const [flightHotelsLoading, setflightHotelsLoading] = useState(true);
   const { data: session, status } = useSession();
   const { itinerary, hotels, flights } = useSelector((state) => state.itinerary);
   const dispatch = useDispatch();
@@ -19,8 +23,68 @@ const AiDisplay = () => {
   const [cityImages, setCityImages] = useState({});
 
   useEffect(() => {
+    const isHotelsFilled = hotels && Object.keys(hotels).length > 0;
+    const isFlightsFilled = flights && Array.isArray(flights) && flights.length > 0;
+
+    if (isHotelsFilled && isFlightsFilled) {
+      setflightHotelsLoading(false);
+    }
+  }, [hotels, flights]);
+
+  useEffect(() => {
     dispatch(setHasSubmitted(false));
   }, []);
+
+  useEffect(() => {
+    async function fetchHotelsAndFlights() {
+      try {
+        const res = await fetch('/api/savedTrips_hotels_flights', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ trip: itinerary }),
+        });
+
+        const result = await res.json();
+
+        if (
+          res.ok &&
+          Array.isArray(result.hotels) &&
+          typeof result.flights === 'object' &&
+          result.flights !== null
+        ) {
+          const cityWiseHotels = {};
+          result.hotels.forEach(h => {
+            if (!cityWiseHotels[h.city]) cityWiseHotels[h.city] = [];
+            const hotelList = h.hotels?.results || [];
+            cityWiseHotels[h.city].push(...hotelList);
+          });
+
+          dispatch(setItineraryData({
+            itinerary,
+            hotels: cityWiseHotels,
+            flights: result.flights,
+          }));
+
+          setflightHotelsLoading(false);
+          setHasFetched(true);
+        } else {
+          console.error("Invalid hotels or flights data format:", result);
+          setflightHotelsLoading(false);
+        }
+      } catch (error) {
+        console.error("API error:", error);
+        setflightHotelsLoading(false);
+      }
+    }
+
+    if (itinerary && !hasFetched && (!hotels || !flights)) {
+      fetchHotelsAndFlights();
+    }
+  }, [itinerary, hotels, flights, hasFetched]);
+
+
 
   useEffect(() => {
     async function fetchImages() {
@@ -247,7 +311,9 @@ const AiDisplay = () => {
                         ))}
                         <hr className='my-2 border-1 border-[#d6d5d5]' />
 
-                        <div className="flex flex-row overflow-x-auto overflow-y-hidden  gap-5 scrollbar-hide">
+                        {flightHotelsLoading ? (
+                          <div className="relative h-[200px] w-[740px] justify-center items-center"><BlurAreaLoader /></div>
+                        ) : (<div className="flex flex-row overflow-x-auto overflow-y-hidden  gap-5 scrollbar-hide">
                           {hotels[city.name]?.length > 0 ? (
                             hotels[city.name]
                               .slice()
@@ -325,7 +391,7 @@ const AiDisplay = () => {
                               <span className="text-gray-500 italic">No hotel offers found.</span>
                             </div>
                           )}
-                        </div>
+                        </div>)}
 
                       </div>
                       <div className='bg-white rounded-xl p-4 shadow-sm border border-blue-100 group-hover:shadow-md transition duration-200'>
@@ -338,7 +404,9 @@ const AiDisplay = () => {
                           </div>
                         ))}
                         <hr className='my-2 mb-4 border-1 border-[#d6d5d5]' />
-                        <div className='flex flex-row overflow-x-auto overflow-y-hidden gap-[10px] scrollbar-hide'>
+                        {flightHotelsLoading ? (
+                          <div className="relative h-[200px] w-[740px] justify-center items-center"><BlurAreaLoader /></div>
+                        ) : <div className='flex flex-row overflow-x-auto overflow-y-hidden gap-[10px] scrollbar-hide'>
 
                           {flights.some(f => f.to === city.name && f.flights?.data?.length > 0) ? (
                             flights
@@ -419,7 +487,7 @@ const AiDisplay = () => {
                             </div>
                           )}
 
-                        </div>
+                        </div>}
                       </div>
                     </div>
                     {(() => {
