@@ -31,7 +31,7 @@ export const metadata = {
     siteName: "TripForge AI",
     images: [
       {
-        url: "/images/logopng.png", 
+        url: "/favicon.ico",
         width: 1200,
         height: 630,
         alt: "TripForge AI Logo",
@@ -44,11 +44,11 @@ export const metadata = {
     card: "summary_large_image",
     title: "TripForge AI – Smart Travel Planning",
     description: "Use AI to plan your perfect trip. Discover destinations, hotels, and create personalized itineraries.",
-    images: ["/images/logopng.png"],
+    images: ["/favicon.ico"],
     creator: "@TripForgeAI",
   },
   icons: {
-    icon: "/images/google.png",
+    icon: "/favicon.ico",
   },
 };
 
