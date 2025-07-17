@@ -35,7 +35,7 @@ function Home() {
         dispatch(setItineraryData({
           itinerary: result.itinerary
         }));
-        router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/ai_display`);
+        router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/itinerary-display`);
       } else {
         console.error("Itinerary generation failed:", result);
         setLoading(false);

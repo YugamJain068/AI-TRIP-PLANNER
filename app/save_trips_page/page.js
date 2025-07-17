@@ -89,7 +89,7 @@ const Page = () => {
           flights: result.flights
         }));
 
-        router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/ai_display`);
+        router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/itinerary-display`);
       } else {
         console.error("Hotels and flights generation failed:", result);
         setPageLoading(false);
@@ -168,7 +168,7 @@ const Page = () => {
             <div className='flex flex-col justify-center items-center gap-4 mt-20'>
               <h1 className='text-xl font-semibold'>No Trips Found</h1>
               <p className='text-sm text-gray-400'>Start planning your next adventure!</p>
-              <Link className='cursor-pointer' href="/ai_page"><button type="button" className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 cursor-pointer dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+              <Link className='cursor-pointer' href="/itinerary-form"><button type="button" className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 cursor-pointer dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                 Plan Your Trip
               </button></Link>
             </div>

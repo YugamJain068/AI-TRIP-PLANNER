@@ -47,7 +47,7 @@ const Navbar = ({ hideBorder = false }) => {
           </Link>
         </li>
         <li>
-          <Link href="/ai_page">
+          <Link href="/itinerary-form">
             <button className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 cursor-pointer dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
               Plan Your Trip
             </button>

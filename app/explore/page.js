@@ -11,7 +11,7 @@ export default function Explore() {
           <div key={city} className="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
             <h2 className="text-lg font-semibold">{city}</h2>
             <p className="text-sm text-gray-500 mt-1">Plan your itinerary in {} with smart AI suggestions.</p>
-            <Link href={`/ai_page?destination=${encodeURIComponent(city)}`} className="text-blue-500 mt-2 inline-block hover:underline">Plan Now</Link>
+            <Link href={`/itinerary-form?destination=${encodeURIComponent(city)}`} className="text-blue-500 mt-2 inline-block hover:underline">Plan Now</Link>
           </div>
         ))}
       </div>
