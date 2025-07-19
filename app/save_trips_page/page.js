@@ -102,14 +102,15 @@ const Page = () => {
 
   return (
     <>
-      <div className='mt-8 p-4 w-[1300px] bg-[#f2fafd] mx-auto rounded-2xl h-[665px] overflow-y-scroll scrollbar-hide'>
-        <h1 className="text-3xl font-bold">
+      <div className='mt-8 p-4 max-w-[1300px] w-full bg-[#f2fafd] mx-auto rounded-2xl h-[665px] overflow-y-scroll scrollbar-hide'>
+        <h1 className="text-2xl sm:text-3xl font-bold">
           Your <span className="text-[#F99262]">Trips</span>
         </h1>
         <hr className='my-4 border-1 border-[#b7b6b6]' />
+
         {!loading ? (
           saved_trips.length > 0 ? (
-            <div className='flex flex-row gap-4 flex-wrap'>
+            <div className='flex flex-wrap gap-8 justify-start'>
               {saved_trips
                 .slice()
                 .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
@@ -117,18 +118,18 @@ const Page = () => {
                   <div
                     onClick={() => handleclick(trip)}
                     key={trip._id}
-                    className="text-white cursor-pointer rounded-2xl overflow-hidden relative w-[300px] h-64 mb-4"
+                    className="text-white cursor-pointer rounded-2xl overflow-hidden relative w-full sm:w-[48%] md:w-[31%] lg:w-[280px] h-64"
                   >
-                    <div className="relative w-full h-[300px] rounded-2xl overflow-hidden">
+                    <div className="relative w-full h-full rounded-2xl overflow-hidden">
                       <Image
                         fill
                         src={trip.bannerImageUrl}
                         alt="Trip Banner"
                         className="w-full h-full object-cover rounded-2xl"
                       />
-                      <div className="absolute bottom-10 flex justify-between left-0 right-0 bg-black/50 px-4 py-2">
+                      <div className="absolute bottom-0 flex justify-between left-0 right-0 bg-black/50 px-4 py-2">
                         <div className="flex flex-col gap-1">
-                          <h2 className="text-[20px] font-bold">{trip.title}</h2>
+                          <h2 className="text-[18px] sm:text-[20px] font-bold">{trip.title}</h2>
                           <p className="font-semibold text-sm">
                             {trip.startDate} - {trip.endDate}
                           </p>
@@ -138,13 +139,14 @@ const Page = () => {
                         </div>
                       </div>
                       {trip.bannerPhotographerName && (
-                        <div className="absolute top-0 left-4 text-right text-xs text-white self-end">
+                        <div className="absolute top-2 left-4 text-right text-xs text-white self-end">
                           Photo by{' '}
                           <a
                             href={trip.bannerPhotographerProfile}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="underline"
+                            onClick={(e) => e.stopPropagation()}
                           >
                             {trip.bannerPhotographerName}
                           </a>{' '}
@@ -154,28 +156,33 @@ const Page = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="underline"
+                            onClick={(e) => e.stopPropagation()}
                           >
                             Unsplash
                           </a>
                         </div>
                       )}
                     </div>
-
                   </div>
                 ))}
             </div>
           ) : (
             <div className='flex flex-col justify-center items-center gap-4 mt-20'>
-              <h1 className='text-xl font-semibold'>No Trips Found</h1>
+              <h1 className='text-lg sm:text-xl font-semibold'>No Trips Found</h1>
               <p className='text-sm text-gray-400'>Start planning your next adventure!</p>
-              <Link className='cursor-pointer' href="/itinerary-form"><button type="button" className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 cursor-pointer dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                Plan Your Trip
-              </button></Link>
+              <Link className='cursor-pointer' href="/itinerary-form">
+                <button
+                  type="button"
+                  className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                >
+                  Plan Your Trip
+                </button>
+              </Link>
             </div>
           )
         ) : (
           <div className='flex flex-col justify-center items-center gap-6 mt-[20%] overflow-hidden'>
-            <h1 className='text-2xl'>
+            <h1 className='text-xl sm:text-2xl'>
               Loading Your <span className="text-[#F99262] font-bold">Trips</span>
             </h1>
             <span><DesignerLoader /></span>
@@ -185,14 +192,17 @@ const Page = () => {
 
       {/* Full-page loader overlay */}
       {pageLoading && (
-        <div className='fixed inset-0 bg-white/80 z-50 flex flex-col justify-center items-center'>
-          <h1 className='text-2xl mb-4'>Preparing Your <span className="text-[#F99262] font-bold">Trip</span>...</h1>
+        <div className='fixed inset-0 bg-white/80 z-50 flex flex-col justify-center items-center px-4'>
+          <h1 className='text-lg sm:text-2xl mb-4'>
+            Preparing Your <span className="text-[#F99262] font-bold">Trip</span>...
+          </h1>
           <span className='mt-2 mb-4 text-sm text-red-500 font-semibold'>
             ⚠️ Please do not refresh or leave the page.
           </span>
           <DesignerLoader />
         </div>
       )}
+
     </>
   );
 };

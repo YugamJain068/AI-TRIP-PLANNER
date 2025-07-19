@@ -58,8 +58,8 @@ function Home() {
 
   return (
     <>
-      <div className="flex overflow-auto scrollbar-hide">
-        <div className="w-[50%] h-screen p-10 overflow-y-auto scrollbar-hide">
+      <div className="flex flex-col md:flex-row overflow-auto scrollbar-hide">
+        <div className="w-full lg:w-[50%] p-6 lg:p-10 h-screen overflow-y-auto scrollbar-hide">
           {loading ? (
             <div className='fixed inset-0 bg-white/80 z-50 flex flex-col justify-center items-center'>
               <h1 className='text-2xl mb-4'>Preparing Your <span className="text-[#F99262] font-bold">Trip</span>...</h1>
@@ -73,16 +73,16 @@ function Home() {
               <Input_form />
             </div>
           )}
-
         </div>
-        <div className="w-[50%] overflow-hidden sticky h-screen">
+
+        {/* AutoScrollAdventure is hidden below md */}
+        <div className="hidden lg:block lg:w-[50%] overflow-hidden">
           <AutoScrollAdventure
-            width="w-[100%]"
-            right="right-[100px]"
-            scale="scale-85"
+            padding="p-10"
           />
         </div>
       </div>
+
     </>
   );
 }

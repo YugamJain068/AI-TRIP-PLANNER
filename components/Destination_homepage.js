@@ -23,12 +23,12 @@ const Destination_homepage = () => {
         {/* First Image */}
         <div
           onClick={() => handleClick(destinations[0].label)}
-          className='relative group cursor-pointer xl:h-[500px] xl:w-[500px] h-[250px] w-[250px]'
+          className='relative group cursor-pointer xl:h-[500px] xl:w-[500px] h-[300px] w-[300px]'
         >
           <Image
             width={500}
             height={500}
-            className='rounded-2xl xl:w-[500px] xl:h-[500px] w-[250px] h-[250px] object-cover transition-transform duration-500 group-hover:scale-[1.03]'
+            className='rounded-2xl xl:w-[500px] xl:h-[500px] w-[300px] h-[300px] object-cover transition-transform duration-500 group-hover:scale-[1.03]'
             src={destinations[0].src}
             alt={destinations[0].alt}
           />
@@ -40,12 +40,12 @@ const Destination_homepage = () => {
         {/* Second Image */}
         <div
           onClick={() => handleClick(destinations[1].label)}
-          className='relative group cursor-pointer xl:hidden block h-[250px] w-[250px]'
+          className='relative group cursor-pointer xl:hidden block h-[300px] w-[300px]'
         >
           <Image
             width={450}
             height={300}
-            className='rounded-2xl w-[250px] h-[250px] object-cover transition-transform duration-500 group-hover:scale-[1.03]'
+            className='rounded-2xl w-[300px] h-[300px] object-cover transition-transform duration-500 group-hover:scale-[1.03]'
             src={destinations[1].src}
             alt={destinations[1].alt}
           />
@@ -57,12 +57,12 @@ const Destination_homepage = () => {
         {/* Third Image */}
         <div
           onClick={() => handleClick(destinations[2].label)}
-          className='relative group cursor-pointer xl:hidden block h-[250px] w-[250px]'
+          className='relative group cursor-pointer xl:hidden block h-[300px] w-[300px]'
         >
           <Image
             width={450}
             height={500}
-            className='rounded-2xl w-[250px] h-[250px] object-cover transition-transform duration-500 group-hover:scale-[1.03]'
+            className='rounded-2xl w-[300px] h-[300px] object-cover transition-transform duration-500 group-hover:scale-[1.03]'
             src={destinations[2].src}
             alt={destinations[2].alt}
           />
@@ -74,12 +74,12 @@ const Destination_homepage = () => {
         {/* Fourth Image */}
         <div
           onClick={() => handleClick(destinations[3].label)}
-          className='relative group cursor-pointer xl:fixed xl:top-[532px] h-[250px] w-[250px] xl:w-[500px]'
+          className='relative group cursor-pointer xl:fixed xl:top-[532px] h-[300px] w-[300px] xl:w-[500px]'
         >
           <Image
             width={500}
             height={300}
-            className='rounded-2xl xl:w-[500px] xl:h-[300px] w-[250px] h-[250px] object-cover transition-transform duration-500 group-hover:scale-[1.03]'
+            className='rounded-2xl xl:w-[500px] xl:h-[300px] w-[300px] h-[300px] object-cover transition-transform duration-500 group-hover:scale-[1.03]'
             src={destinations[3].src}
             alt={destinations[3].alt}
           />
@@ -90,24 +90,36 @@ const Destination_homepage = () => {
 
         {/* Second & Third Images for XL screens */}
         <div className='flex flex-col gap-8 not-xl:hidden'>
-          {destinations.slice(1, 3).map((dest, index) => (
             <div
-              key={index}
-              onClick={() => handleClick(dest.label)}
+              onClick={() => handleClick(destinations[1].label)}
               className='relative group cursor-pointer'
             >
               <Image
                 width={450}
-                height={index === 0 ? 300 : 500}
-                className={`rounded-2xl w-[450px] h-[${index === 0 ? '300' : '500'}px] object-cover transition-transform duration-500 group-hover:scale-[1.03]`}
-                src={dest.src}
-                alt={dest.alt}
+                height={300}
+                className={`rounded-2xl w-[450px] h-[300px] object-cover transition-transform duration-500 group-hover:scale-[1.03]`}
+                src={destinations[1].src}
+                alt={destinations[1].alt}
               />
               <div className='absolute inset-0 bg-black/30 backdrop-brightness-75 opacity-0 group-hover:opacity-100 transition-transform flex items-center justify-center rounded-2xl group-hover:scale-[1.03] duration-500'>
-                <p className='text-white text-xl font-semibold'>{dest.label}</p>
+                <p className='text-white text-xl font-semibold'>{destinations[1].label}</p>
               </div>
             </div>
-          ))}
+            <div
+              onClick={() => handleClick(destinations[2].label)}
+              className='relative group cursor-pointer'
+            >
+              <Image
+                width={450}
+                height={500}
+                className={`rounded-2xl w-[450px] h-[500px] object-cover transition-transform duration-500 group-hover:scale-[1.03]`}
+                src={destinations[2].src}
+                alt={destinations[2].alt}
+              />
+              <div className='absolute inset-0 bg-black/30 backdrop-brightness-75 opacity-0 group-hover:opacity-100 transition-transform flex items-center justify-center rounded-2xl group-hover:scale-[1.03] duration-500'>
+                <p className='text-white text-xl font-semibold'>{destinations[2].label}</p>
+              </div>
+            </div>
         </div>
       </div>
   );

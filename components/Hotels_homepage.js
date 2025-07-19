@@ -6,31 +6,31 @@ import hotels from '@/data/popularHotels.json';
 const Hotels_homepage = () => {
   return (
     <div className="py-2">
-      <div className="flex flex-row overflow-x-auto overflow-y-hidden gap-5 scrollbar-hide">
+      <div className="flex flex-row overflow-x-auto overflow-y-hidden gap-5 scrollbar-hide not-sm:gap-0">
         {hotels.map((hotel) => (
           <div
             key={hotel.id}
-            className="flex flex-col overflow-hidden shrink-0 pt-2 pb-2 hover:shadow-xl transition-transform hover:scale-[1.02] rounded-xl bg-white"
+            className="flex flex-col overflow-hidden shrink-0 pt-2 pb-2 hover:shadow-xl transition-transform hover:scale-[1.02] rounded-xl not-sm:w-[160px]"
           >
             <Image
               height={210}
               width={232}
-              className="h-[210px] w-[232px] object-cover rounded-xl"
+              className="h-[210px] w-[232px] object-cover rounded-xl not-sm:h-[150px] not-sm:w-[150px]"
               src={hotel.imageUrl}
               alt={hotel.name}
             />
-            <div className="w-[225px] mt-2 flex flex-col gap-1.5 px-1 relative ml-1">
-              <span className="truncate text-md font-semibold">
+            <div className="w-[225px] mt-2 flex flex-col gap-1.5 px-1 relative ml-1 not-sm:w-[155px]">
+              <span className="truncate text-md font-semibold not-sm:text-sm">
                 {hotel.name}
               </span>
 
-              <span className="text-xs text-gray-600">
+              <span className="text-xs text-gray-600 truncate">
                 {hotel.location}, {hotel.country}
               </span>
 
               <div className="flex flex-row gap-2 items-center">
                 <Image width={13} height={13} src="/images/star.png" alt="rating" />
-                <span className="text-sm">
+                <span className="text-sm not-sm:text-xs">
                   {hotel.reviewScore} / 10
                 </span>
               </div>

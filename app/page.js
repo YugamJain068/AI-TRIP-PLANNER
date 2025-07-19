@@ -66,32 +66,32 @@ export default function Home() {
 
       <section className="flex flex-col px-6 sm:px-20 gap-10">
         <article className="bg-[#F6FCFE] flex flex-col items-center text-center p-6 sm:p-10 rounded-2xl space-y-4">
-          <h2 className="text-3xl font-bold">
+          <h2 className="text-3xl font-bold not-sm:text-xl">
             Top Trending Destinations in <span className="text-[#F99262]">2025</span>
           </h2>
-          <p className="text-[#626262]">Explore the most popular travel spots this year — powered by global travel data.</p>
-          <div className="scale-90">
+          <p className="text-[#626262] not-sm:text-sm">Explore the most popular travel spots this year — powered by global travel data.</p>
+          <div className="scale-95">
             <Destination_homepage />
           </div>
         </article>
 
-        <article className="bg-[#F6FCFE] flex flex-col gap-3 p-6 sm:p-10 rounded-2xl text-center">
-          <h2 className="text-3xl font-bold">
+        <article className="bg-[#F6FCFE] flex flex-col gap-3 p-6 sm:p-10 rounded-2xl">
+          <h2 className="text-3xl font-bold not-sm:text-xl">
             World’s Most Loved <span className="text-[#F99262]">Hotels</span>
           </h2>
-          <p className="text-[#626262]">Discover iconic hotels known for exceptional stays worldwide.</p>
+          <p className="text-[#626262] not-sm:text-sm">Discover iconic hotels known for exceptional stays worldwide.</p>
           <Hotels_homepage />
         </article>
 
         {showHotels && <Recent_hotels hotels={hotels} />}
       </section>
 
-      <section className="flex flex-col items-center mt-16 mb-16 px-6 text-center">
-        <h2 className="text-4xl sm:text-5xl font-bold">
+      <section className="flex flex-col items-center mt-16 mb-16 px-4 sm:px-6 text-center">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
           Your <span className="text-[#F99262]">AI-Powered</span> Trip
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12 w-full max-w-6xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8 mt-10 w-full max-w-6xl">
           {[
             {
               title: "Personalized AI Planning",
@@ -118,20 +118,24 @@ export default function Home() {
               alt: "Saved trips"
             }
           ].map((item, index) => (
-            <article key={index} className="flex flex-col items-center text-center bg-white p-6 rounded-2xl hover:scale-[1.03] transition">
+            <article
+              key={index}
+              className="flex flex-col items-center text-center bg-white p-4 sm:p-6 rounded-2xl hover:scale-[1.03] transition duration-300"
+            >
               <Image
                 src={item.image}
                 alt={item.alt}
                 width={400}
                 height={300}
-                className="rounded-xl w-full h-72 max-w-sm object-cover"
+                className="rounded-xl w-full h-56 sm:h-64 md:h-72 object-cover"
               />
-              <h3 className="font-semibold text-2xl mt-4">{item.title}</h3>
-              <p className="text-[#626262] mt-2">{item.description}</p>
+              <h3 className="font-semibold text-xl sm:text-2xl mt-4">{item.title}</h3>
+              <p className="text-[#626262] mt-2 text-sm sm:text-base">{item.description}</p>
             </article>
           ))}
         </div>
       </section>
+
     </>
   );
 }

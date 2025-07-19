@@ -15,7 +15,7 @@ const Footer = () => {
 
         {/* Horizontal Links */}
         <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-300 mb-6">
-          <Link href="/itinerary-form" className="hover:underline">AI Itinerary</Link>
+          <Link href="/itinerary-form" className="hover:underline">Plan Your Trip</Link>
           <Link href="/save_trips_page" className="hover:underline">Saved Trips</Link>
           <Link href="/explore" className="hover:underline">Explore</Link>
           <Link href="/about" className="hover:underline">About Us</Link>

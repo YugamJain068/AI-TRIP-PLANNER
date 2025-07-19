@@ -205,15 +205,19 @@ const Input_form = () => {
 
     return (
         <>
-            <div>
-                <h1 className='font-bold text-4xl'>Tell us your travel preferences</h1>
-                <p className='text-[#626262] mt-3 mb-10'>Just provide some basic information, and our trip planner will generate a customized itinerary based on your preferences.</p>
+            <div className="px-4  max-w-4xl mx-auto">
+                <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl">
+                    Tell us your travel preferences
+                </h1>
+                <p className="text-sm sm:text-base text-[#626262] mt-2 sm:mt-3 mb-6 sm:mb-10">
+                    Just provide some basic information, and our trip planner will generate a customized itinerary based on your preferences.
+                </p>
                 <form className='flex flex-col' onSubmit={handleSubmit}>
 
-                    <label className='text-2xl font-semibold mb-6'>Where are you departing from?</label>
+                    <label className='text-md sm:text-xl md:text-2xl font-semibold mb-6'>Where are you departing from?</label>
                     <input
                         ref={departureInputRef}
-                        className='h-10 px-3 rounded-md border border-[#626262]'
+                        className='h-10 px-3 rounded-md border border-[#626262] text-sm sm:text-md md:text-lg'
                         type="text"
                         placeholder="Enter Departure Location"
                         value={departureInput}
@@ -224,12 +228,12 @@ const Input_form = () => {
                         onBlur={handleDepartureBlur}
                     />
 
-                    <hr className="my-20 border-1 border-[#efecec]" />
+                    <hr className="my-10 sm:my-12 md:my-15 border-1 border-[#efecec]" />
 
-                    <label className='text-2xl font-semibold mb-6'>What is destination of choice?</label>
+                    <label className='text-md sm:text-xl md:text-2xl font-semibold mb-6'>What is destination of choice?</label>
                     <input
                         ref={inputRef}
-                        className='h-10 px-3 rounded-md border border-[#626262]'
+                        className='h-10 px-3 rounded-md border border-[#626262] text-sm sm:text-md md:text-lg'
                         type="text"
                         placeholder="Enter Destination"
                         value={destinationInput}
@@ -240,11 +244,11 @@ const Input_form = () => {
                         onBlur={handleBlur}
                     />
 
-                    <hr className="my-20 border-1 border-[#efecec]" />
+                    <hr className="my-10 sm:my-12 md:my-15 border-1 border-[#efecec]" />
 
-                    <label className='text-2xl font-semibold mb-6 ' htmlFor="">When are you planning to travel?</label>
+                    <label className='text-md sm:text-xl md:text-2xl font-semibold mb-6' htmlFor="">When are you planning to travel?</label>
                     <input
-                        className='h-10 rounded-md border border-[#626262] mb-6 px-3 text-[#626262]'
+                        className='h-10 rounded-md border border-[#626262] mb-6 px-3 text-[#626262] text-sm sm:text-md md:text-lg'
                         type={inputType}
                         placeholder='Select date'
                         onFocus={() => setInputType('date')}
@@ -255,59 +259,59 @@ const Input_form = () => {
                         onChange={(e) => setDate(e.target.value)}
                     />
 
-                    <hr className='my-20 border-1 border-[#efecec]' />
+                    <hr className="my-10 sm:my-12 md:my-15 border-1 border-[#efecec]" />
 
-                    <label className='text-2xl font-semibold mb-6 ' htmlFor="">How many days are you planning to travel?</label>
+                    <label className='text-md sm:text-xl md:text-2xl font-semibold mb-6' htmlFor="">How many days are you planning to travel?</label>
                     <div className='flex justify-between'>
-                        <span className='self-center text-xl'>Days</span>
+                        <span className='self-center text-md sm:text-lg md:text-xl'>Days</span>
                         <div className='flex justify-center items-center gap-2'>
-                            <button type='button' className="text-4xl border rounded-full h-10 w-10 flex items-center justify-center" onClick={() => setDays((prev) => Math.max(1, Number(prev) - 1))}> <span className='text-2xl'>-</span></button>
+                            <button type='button' className="text-lg sm:text-2xl md:text-3xl lg-text-4xl border rounded-full h-10 w-10 flex items-center justify-center" onClick={() => setDays((prev) => Math.max(1, Number(prev) - 1))}> <span className='text-2xl'>-</span></button>
                             <input className='h-10 text-center w-16' type="text" value={days} onChange={(e) => setDays(e.target.value)} />
-                            <button type='button' className='text-4xl border rounded-full h-10 w-10 flex items-center justify-center' onClick={() => setDays((prev) => Math.min(30, Number(prev) + 1))}> <span className='text-2xl'>+</span></button>
+                            <button type='button' className='text-lg sm:text-2xl md:text-3xl lg-text-4xl border rounded-full h-10 w-10 flex items-center justify-center' onClick={() => setDays((prev) => Math.min(30, Number(prev) + 1))}> <span className='text-2xl'>+</span></button>
                         </div>
                     </div>
 
-                    <hr className='my-20 border-1 border-[#efecec]' />
+                    <hr className="my-10 sm:my-12 md:my-15 border-1 border-[#efecec]" />
 
-                    <label className='text-2xl font-semibold' htmlFor="">Members Information - </label>
-                    <p className='text-[#626262] mt-3 mb-10'>Please fill the details of members for flights and hotels recommendations</p>
+                    <label className='text-md sm:text-xl md:text-2xl font-semibold' htmlFor="">Members Information - </label>
+                    <p className='text-sm sm:text-base text-[#626262] mt-2 sm:mt-3 mb-6 sm:mb-10'>Please fill the details of members for flights and hotels recommendations</p>
                     <div className='flex justify-between'>
-                        <span className='self-center text-xl'>Adults</span>
+                        <span className='self-center text-md sm:text-lg md:text-xl'>Adults</span>
                         <div className='flex justify-center items-center gap-2'>
-                            <button type='button' className="text-4xl border rounded-full h-10 w-10 flex items-center justify-center" onClick={() => setAdults((prev) => Math.max(1, Number(prev) - 1))}> <span className='text-2xl'>-</span></button>
+                            <button type='button' className="text-lg sm:text-2xl md:text-3xl lg-text-4xl border rounded-full h-10 w-10 flex items-center justify-center" onClick={() => setAdults((prev) => Math.max(1, Number(prev) - 1))}> <span className='text-2xl'>-</span></button>
                             <input className='h-10 text-center w-16' type="text" value={adults} onChange={(e) => setAdults(e.target.value)} />
-                            <button type='button' className='text-4xl border rounded-full h-10 w-10 flex items-center justify-center' onClick={() => setAdults((prev) => Math.min(30, Number(prev) + 1))}> <span className='text-2xl'>+</span></button>
+                            <button type='button' className='text-lg sm:text-2xl md:text-3xl lg-text-4xl border rounded-full h-10 w-10 flex items-center justify-center' onClick={() => setAdults((prev) => Math.min(30, Number(prev) + 1))}> <span className='text-2xl'>+</span></button>
                         </div>
                     </div>
 
                     <div className='mt-2 flex justify-between'>
-                        <span className='self-center text-xl'>Children</span>
+                        <span className='self-center text-md sm:text-lg md:text-xl'>Children</span>
                         <div className='flex justify-center items-center gap-2'>
-                            <button type='button' className="text-4xl border rounded-full h-10 w-10 flex items-center justify-center" onClick={() => setChildren((prev) => Math.max(0, Number(prev) - 1))}> <span className='text-2xl'>-</span></button>
+                            <button type='button' className="text-lg sm:text-2xl md:text-3xl lg-text-4xl border rounded-full h-10 w-10 flex items-center justify-center" onClick={() => setChildren((prev) => Math.max(0, Number(prev) - 1))}> <span className='text-2xl'>-</span></button>
                             <input className='h-10 text-center w-16' type="text" value={children} onChange={(e) => setChildren(e.target.value)} />
-                            <button type='button' className='text-4xl border rounded-full h-10 w-10 flex items-center justify-center' onClick={() => setChildren((prev) => Math.min(30, Number(prev) + 1))}> <span className='text-2xl'>+</span></button>
+                            <button type='button' className='text-lg sm:text-2xl md:text-3xl lg-text-4xl border rounded-full h-10 w-10 flex items-center justify-center' onClick={() => setChildren((prev) => Math.min(30, Number(prev) + 1))}> <span className='text-2xl'>+</span></button>
                         </div>
                     </div>
 
                     <div className='mt-2 flex justify-between'>
-                        <span className='self-center text-xl'>Infants</span>
+                        <span className='self-center text-md sm:text-lg md:text-xl'>Infants</span>
                         <div className='flex justify-center items-center gap-2'>
-                            <button type='button' className="text-4xl border rounded-full h-10 w-10 flex items-center justify-center" onClick={() => setInfants((prev) => Math.max(0, Number(prev) - 1))}> <span className='text-2xl'>-</span></button>
+                            <button type='button' className="text-lg sm:text-2xl md:text-3xl lg-text-4xl border rounded-full h-10 w-10 flex items-center justify-center" onClick={() => setInfants((prev) => Math.max(0, Number(prev) - 1))}> <span className='text-2xl'>-</span></button>
                             <input className='h-10 text-center w-16' type="text" value={infants} onChange={(e) => setInfants(e.target.value)} />
-                            <button type='button' className='text-4xl border rounded-full h-10 w-10 flex items-center justify-center' onClick={() => setInfants((prev) => Math.min(30, Number(prev) + 1))}> <span className='text-2xl'>+</span></button>
+                            <button type='button' className='text-lg sm:text-2xl md:text-3xl lg-text-4xl border rounded-full h-10 w-10 flex items-center justify-center' onClick={() => setInfants((prev) => Math.min(30, Number(prev) + 1))}> <span className='text-2xl'>+</span></button>
                         </div>
                     </div>
 
-                    <hr className='my-20 border-1 border-[#efecec]' />
+                    <hr className="my-10 sm:my-12 md:my-15 border-1 border-[#efecec]" />
 
-                    <label className='text-2xl font-semibold ' htmlFor="">What is your budget?</label>
-                    <p className='text-[#626262] mt-1 mb-6'>The budget is exclusively allocated for activities and dining purposes.</p>
+                    <label className='text-md sm:text-xl md:text-2xl font-semibold' htmlFor="">What is your budget?</label>
+                    <p className='text-sm sm:text-base text-[#626262] mt-2 sm:mt-3 mb-6 sm:mb-10'>The budget is exclusively allocated for activities and dining purposes.</p>
 
-                    <div className="flex space-x-6">
+                    <div className="flex flex-wrap gap-6">
                         {options.map((option) => (
                             <div
                                 key={option.value}
-                                className={`border rounded-xl p-6 w-64 cursor-pointer text-center transition-all duration-200 ${selected_budget === option.value ? 'bg-gray-100 border-black shadow-md' : 'hover:shadow-md'
+                                className={`border rounded-xl p-4 sm:p-6 w-28 sm:w-36 cursor-pointer text-center transition-all duration-200 ${selected_budget === option.value ? 'bg-gray-100 border-black shadow-md' : 'hover:shadow-md'
                                     }`}
                                 onClick={() => handleBudgetSelect(option.value)}
                             >
@@ -321,22 +325,22 @@ const Input_form = () => {
                                             className="object-contain"
                                         />
                                     </div>
-                                    <h2 className="text-lg font-semibold">{option.label}</h2>
-                                    <p className="text-gray-500">{option.range}</p>
+                                    <h2 className="text-sm sm:text-md md:text-lg font-semibold">{option.label}</h2>
+                                    <p className="text-gray-500 text-xs sm:text-sm md:text-md">{option.range}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    <hr className='my-20 border-1 border-[#efecec]' />
+                    <hr className="my-10 sm:my-12 md:my-15 border-1 border-[#efecec]" />
 
-                    <label className='text-2xl font-semibold mb-6 ' htmlFor="">Who do you plan on traveling with on your next adventure?</label>
+                    <label className='text-md sm:text-xl md:text-2xl font-semibold mb-6' htmlFor="">Who do you plan on traveling with on your next adventure?</label>
 
-                    <div className="flex space-x-6">
+                    <div className="flex flex-wrap gap-6">
                         {members.map((member) => (
                             <div
                                 key={member.value}
-                                className={`border rounded-xl p-6 w-64 cursor-pointer text-center transition-all duration-200 ${selected_member === member.value ? 'bg-gray-100 border-black shadow-md' : 'hover:shadow-md'
+                                className={`border rounded-xl p-4 sm:p-6 w-28 sm:w-36 cursor-pointer text-center transition-all duration-200 ${selected_member === member.value ? 'bg-gray-100 border-black shadow-md' : 'hover:shadow-md'
                                     }`}
                                 onClick={() => handleMemberSelect(member.value)}
                             >
@@ -350,20 +354,20 @@ const Input_form = () => {
                                             className="object-contain"
                                         />
                                     </div>
-                                    <h2 className="text-lg font-semibold">{member.label}</h2>
+                                    <h2 className="text-sm sm:text-md md:text-lg font-semibold ">{member.label}</h2>
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    <hr className='my-20 border-1 border-[#efecec]' />
+                    <hr className="my-10 sm:my-12 md:my-15 border-1 border-[#efecec]" />
 
-                    <label className='text-2xl font-semibold mb-6 ' htmlFor="">Which activities are you interested in?</label>
+                    <label className='text-md sm:text-xl md:text-2xl font-semibold mb-6' htmlFor="">Which activities are you interested in?</label>
                     <div className="flex flex-wrap gap-6">
                         {activities.map((activity) => (
                             <div
                                 key={activity.value}
-                                className={`border rounded-xl p-6 w-50 h-40 cursor-pointer text-center transition-all duration-200 ${selectedActivities.includes(activity.value)
+                                className={`border rounded-xl p-4 sm:p-6 w-28 sm:w-36 h-32 sm:h-40 cursor-pointer text-center transition-all duration-200 ${selectedActivities.includes(activity.value)
                                     ? 'bg-gray-100 border-black shadow-md'
                                     : 'hover:shadow-md'
                                     }`}
@@ -379,7 +383,7 @@ const Input_form = () => {
                                             className="object-contain"
                                         />
                                     </div>
-                                    <h2 className="text-lg font-semibold">{activity.label}</h2>
+                                    <h2 className="text-sm sm:text-md md:text-lg font-semibold">{activity.label}</h2>
                                 </div>
                             </div>
                         ))}

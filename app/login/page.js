@@ -67,62 +67,91 @@ const Login = () => {
         <>
 
             <div className={`flex flex-row`}>
-                <AutoScrollAdventure
-                    width="w-[55%]"
-                    right="right-[180px]"
-                    scale="scale-100"
-                />
-                <div className='h-screen p-20 w-[45%] flex flex-col items-center'>
+                <div className="hidden lg:block w-full lg:w-[55%]">
+                    <AutoScrollAdventure
+                        padding="p-20"
+                    />
+                </div>
+                <div className="w-full lg:w-[45%] h-screen p-6 sm:p-10 md:p-20 flex flex-col items-center">
                     <Link href="/">
-                        <span className='flex justify-center items-center gap-2 text-[#F99262] font-semibold text-3xl'>
-                            <div className='h-[70px] w-[70px] overflow-hidden relative'>
-                                <Image sizes='70px' priority fill className='h-[70px] object-cover' src="/images/logo.avif" alt="logo" />
+                        <span className='flex justify-center items-center gap-2 text-[#F99262] font-semibold text-2xl sm:text-3xl'>
+                            <div className='h-[60px] w-[60px] sm:h-[70px] sm:w-[70px] overflow-hidden relative'>
+                                <Image sizes='70px' priority fill className='object-cover' src="/images/logo.avif" alt="logo" />
                             </div>
-                            TripForge-AI
+                            <span>TripForge-AI</span>
                         </span>
                     </Link>
-                    <h1 className='text-5xl mt-8 font-semibold'>Welcome to <span className='text-[#F99262]'>Travelling</span></h1>
-                    <p className='mt-4 text-center text-[#626262]'>Login to access travel deals, manage your booking, and place your vacation hassle free</p>
-                    <form className='mt-6 gap-4 flex flex-col' onSubmit={handleSubmit}>
-                        <input value={form.email ? form.email : ""} onChange={handleChange} className='border border-[#e3dede] text-[#626262] rounded-md p-2 w-[475px] h-[50px]' placeholder='Email' type="text" name="email" id="email" />
-                        <input value={form.password ? form.password : ""} onChange={handleChange} className='border border-[#e3dede] text-[#626262] rounded-md p-2 w-[475px] h-[50px]' placeholder='Password' type="password" name="password" id="password" />
+
+                    <h1 className='text-3xl sm:text-4xl md:text-5xl mt-8 font-semibold text-center'>
+                        Welcome to <span className='text-[#F99262]'>Travelling</span>
+                    </h1>
+
+                    <p className='mt-4 text-center text-[#626262] text-sm sm:text-base'>
+                        Login to access travel deals, manage your booking, and place your vacation hassle free
+                    </p>
+
+                    <form className='mt-6 gap-4 flex flex-col w-full sm:w-[400px] md:w-[475px]' onSubmit={handleSubmit}>
+                        <input
+                            value={form.email || ""}
+                            onChange={handleChange}
+                            className='border border-[#e3dede] text-[#626262] rounded-md p-2 h-[50px]'
+                            placeholder='Email'
+                            type="text"
+                            name="email"
+                            id="email"
+                        />
+                        <input
+                            value={form.password || ""}
+                            onChange={handleChange}
+                            className='border border-[#e3dede] text-[#626262] rounded-md p-2 h-[50px]'
+                            placeholder='Password'
+                            type="password"
+                            name="password"
+                            id="password"
+                        />
                         {msg && <span className='text-red-500'>{msg}</span>}
-                        {!loading ? (<button type="submit" className='bg-[#F99262] text-white rounded-2xl p-2 w-[475px] h-[45px] cursor-pointer'>Log In</button>) : (
+                        {!loading ? (
+                            <button type="submit" className='bg-[#F99262] text-white rounded-2xl p-2 h-[45px]'>
+                                Log In
+                            </button>
+                        ) : (
                             <div className='flex justify-center scale-60'><DesignerLoader /></div>
                         )}
                     </form>
 
-                    <span className='mt-5 text-[#626262]'>Don&apos;t have an account?
+                    <span className='mt-5 text-[#626262] text-sm sm:text-base'>
+                        Don&apos;t have an account?
                         <span className='text-[#F99262] font-semibold cursor-pointer'>
-                            <Link href="/signup"> Sign Up</Link></span>
+                            <Link href="/signup"> Sign Up</Link>
+                        </span>
                     </span>
-                    <div className=" w-full flex items-center mt-8">
+
+                    <div className="w-full sm:w-[400px] md:w-[475px] flex items-center mt-8">
                         <hr className="flex-1 border-t border-gray-300" />
-                        <span className=" text-[#626262] mx-4 whitespace-nowrap">or Continue with</span>
+                        <span className="text-[#626262] mx-4 whitespace-nowrap text-sm sm:text-base">or Continue with</span>
                         <hr className="flex-1 border-t border-gray-300" />
                     </div>
-                    <div className='flex gap-4 mt-6'>
-                        <button onClick={() => handleOAuthLogin("google")} className='h-[50px] flex justify-center items-center gap-3 cursor-pointer border border-[#e3dede] rounded-md p-2 w-[170px]'>
-                            <div className='h-[30px] w-[30px] relative overflow-hidden'>
-                                <Image fill sizes='30px' className='h-[30px] cursor-pointer object-cover' src="/images/google.png" alt="google" />
-                            </div>
-                            <span className='text-[#626262]'>Google</span>
-                        </button>
-                        <button onClick={() => handleOAuthLogin("facebook")} className='h-[50px] flex justify-center items-center gap-3 cursor-pointer border border-[#e3dede] rounded-md p-2 w-[170px]'>
-                            <div className='h-[30px] w-[30px] relative overflow-hidden'>
-                                <Image fill sizes='30px' className='h-[30px] cursor-pointer object-cover' src="/images/facebook-app-symbol.png" alt="facebook" />
-                            </div>
-                            <span className='text-[#626262]'>Facebook</span>
-                        </button>
-                        <button onClick={() => handleOAuthLogin("github")} className='h-[50px] flex justify-center items-center gap-3 cursor-pointer border border-[#e3dede] rounded-md p-2 w-[170px]'>
-                            <div className='h-[30px] w-[30px] relative overflow-hidden'>
-                                <Image fill sizes='30px' className='h-[30px] cursor-pointer object-cover' src="/images/github-logo.png"
-                                    alt="apple" />
-                            </div>
-                            <span className='text-[#626262]'>GitHub</span>
-                        </button>
+
+                    <div className='flex flex-col sm:flex-row gap-4 mt-6 w-full sm:w-auto'>
+                        {[
+                            { provider: "google", label: "Google", src: "/images/google.png" },
+                            { provider: "facebook", label: "Facebook", src: "/images/facebook-app-symbol.png" },
+                            { provider: "github", label: "GitHub", src: "/images/github-logo.png" },
+                        ].map(({ provider, label, src }) => (
+                            <button
+                                key={provider}
+                                onClick={() => handleOAuthLogin(provider)}
+                                className='h-[50px] flex justify-center items-center gap-3 cursor-pointer border border-[#e3dede] rounded-md p-2 w-full sm:w-[170px]'
+                            >
+                                <div className='h-[30px] w-[30px] relative overflow-hidden'>
+                                    <Image fill sizes='30px' className='object-cover' src={src} alt={label} />
+                                </div>
+                                <span className='text-[#626262]'>{label}</span>
+                            </button>
+                        ))}
                     </div>
                 </div>
+
             </div>
         </>
     )

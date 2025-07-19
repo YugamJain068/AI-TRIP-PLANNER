@@ -18,11 +18,11 @@ const Recent_hotels = ({ hotels }) => {
 
   return (
     <>
-      <div className="bg-[#F6FCFE] flex flex-col gap-3 p-4 rounded-2xl">
-        <h1 className="text-3xl font-bold">
+      <div className="bg-[#F6FCFE] flex flex-col gap-3 sm:p-10 p-6 rounded-2xl">
+        <h1 className="text-3xl font-bold not-sm:text-xl">
           Hotels From Your Latest <span className="text-[#F99262]">Trip Plan</span>
         </h1>
-        <p className="text-[#626262]">
+        <p className="text-[#626262] not-sm:text-sm">
           Based on your recent itinerary.
         </p>
         <div className="flex flex-row overflow-x-auto overflow-y-hidden gap-5 scrollbar-hide">
@@ -45,17 +45,17 @@ const Recent_hotels = ({ hotels }) => {
             return (
               <div
                 key={`${data?.id}-${idx4}`}
-                className="flex flex-col overflow-hidden shrink-0 pt-2 pb-2 hover:shadow-xl transition-transform hover:scale-[1.01]"
+                className="not-sm:w-[160px] flex flex-col overflow-hidden shrink-0 pt-2 pb-2 hover:shadow-xl transition-transform hover:scale-[1.01]"
               >
                 <Image
                   height={210}
                   width={232}
-                  className="h-[210px] w-[232px] object-cover rounded-xl"
+                  className="h-[210px] w-[232px] object-cover rounded-xl not-sm:h-[150px] not-sm:w-[150px]"
                   src={photoUrl}
                   alt={hotel.displayName?.text || "Hotel image"}
                 />
-                <div className="w-[225px] mt-2 flex flex-col gap-1.5 px-1 relative ml-1">
-                  <span className="truncate text-md font-semibold">
+                <div className="w-[225px] mt-2 flex flex-col gap-1.5 px-1 relative ml-1 not-sm:w-[155px]">
+                  <span className="truncate text-md font-semibold not-sm:text-sm">
                     {hotel.displayName?.text}
                   </span>
 
@@ -72,22 +72,14 @@ const Recent_hotels = ({ hotels }) => {
                       src="/images/star.png"
                       alt="rating"
                     />
-                    <span className="text-sm">
+                    <span className="text-sm not-sm:text-xs">
                       {reviewScore || "N/A"} - {reviewText || "No reviews"}
                     </span>
                   </div>
 
                   {location && (
-                    <span className="text-xs text-gray-500">{location}</span>
+                    <span className="text-xs text-gray-500 ">{location}</span>
                   )}
-
-                  <span className="text-sm font-semibold text-green-600">
-                    {priceStay ? `Total: $${priceStay}` : ""}
-                  </span>
-
-                  <span className="text-xs text-gray-500">
-                    {priceNight ? `Avg per night: $${priceNight}` : ""}
-                  </span>
 
                   <a
                     href={`https://www.booking.com/hotel/${hotel.id}.html`}
