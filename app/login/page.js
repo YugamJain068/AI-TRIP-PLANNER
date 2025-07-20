@@ -19,6 +19,7 @@ const Login = () => {
         await signIn(provider, {
             callbackUrl: `/oauth-callback?provider=${provider}`,
         });
+        setLoading(false);
     };
 
     const handleChange = (e) => {

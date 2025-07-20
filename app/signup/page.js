@@ -22,6 +22,7 @@ const Signup = () => {
         await signIn(provider, {
             callbackUrl: `/oauth-callback?provider=${provider}`,
         });
+        setLoading(false);
     };
 
     const handleSubmit = async (e) => {
